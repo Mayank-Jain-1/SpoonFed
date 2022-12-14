@@ -7,7 +7,9 @@ export const SearchHeader = () => {
     <>
       <Navbar />
       <div className="cover container-fluid d-flex flex-column justify-content-center align-items-center p-3">
-        <img src={bgimage} alt="" className="img-fluid bg-img" />
+        <div className="w-100 bg-img-div">
+          <img src={bgimage} alt="" className="bg-img" />
+        </div>
         <h1
           id="logo"
           className="text-center text-danger bg-white p-4 rounded-circle mb-4"

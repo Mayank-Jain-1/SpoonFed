@@ -12,19 +12,27 @@ code {
 }
 
 .bg-img{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  object-fit:cover;
   z-index: -1;
+  min-width: 100%;
+  min-height: 960px;
+  object-fit:cover;
+}
+
+.bg-img-div{
+  position: absolute;
+  left: 0;
+  height: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 
 .cover{
   position: relative;
   height: 480px;
-  background: linear-gradient(#9D0E0E00, #4F070799);
+  background: linear-gradient(#9D0E0E10, rgba(47, 5, 5, 0.8));
   color: white;
 }
 
