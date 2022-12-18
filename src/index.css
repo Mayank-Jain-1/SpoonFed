@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.bg-img{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  object-fit:cover;
+  z-index: -1;
+}
+
+.cover{
+  position: relative;
+  height: 480px;
+  background: linear-gradient(#9D0E0E00, #4F070799);
+  color: white;
+}
+
+.cl-dg{
+  color: #636F88 !important;
+}
