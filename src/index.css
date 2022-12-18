@@ -31,3 +31,13 @@ code {
 .cl-dg{
   color: #636F88 !important;
 }
+
+#searchIcon{
+  position: absolute;
+  left: 1rem;
+}
+
+#inpLocation{
+  border: none;
+  min-height: 58px;
+}
