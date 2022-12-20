@@ -31,6 +31,10 @@ code {
   color: #192F60 !important;
 }
 
+.cl-dg{
+  color: #8C96AB;
+}
+
 #searchIcon{
   position: absolute;
   left: 1rem;
@@ -61,6 +65,7 @@ code {
 
 #login:hover{
   color: #dc3545 !important;
+  border-bottom: 2px solid #dc3545 !important;
 }
 
 #register{
@@ -72,6 +77,16 @@ code {
   background-color: white !important;
   color: #dc3545 !important;
 }
+
+.searchItem{
+  /* max-width: 360px; */
+  /* max-height: 160px; */
+  /* min-width: 360px; */
+  min-height: 160px;
+  background-color: bisque;
+  border: 3px solid black;
+}
+
 
 @media (width<=769px) {
   #logo{
@@ -87,6 +102,5 @@ code {
   #inpLocation{
     min-width: 37px;
   }
-  
 }
 
