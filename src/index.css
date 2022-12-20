@@ -55,10 +55,23 @@ code {
   font-weight: 400;
 }
 
-.navlink{
-  min-width: 200px !important;
+.navbar{
+  z-index: 1;
 }
 
+#login:hover{
+  color: #dc3545 !important;
+}
+
+#register{
+  min-width: 200px !important;
+  cursor: pointer;
+}
+
+#register:hover{
+  background-color: white !important;
+  color: #dc3545 !important;
+}
 
 @media (width<=769px) {
   #logo{
