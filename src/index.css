@@ -67,16 +67,19 @@ code {
 #login:hover{
   color: #dc3545 !important;
   border-bottom: 2px solid #dc3545 !important;
+  transition: 0.15s;
 }
 
 #register{
   min-width: 200px !important;
   cursor: pointer;
+  transition: 0.15s;
 }
 
 #register:hover{
   background-color: white !important;
   color: #dc3545 !important;
+  transition: 0.15s;
 }
 
 .searchItem{
@@ -86,6 +89,7 @@ code {
   min-height: 160px;
   padding: 0 !important;
   box-shadow: 0px 3px 6px #00000029;
+  transition: 0.15s;
 }
 
 .searchItem img{
@@ -104,6 +108,7 @@ code {
 
 .searchItem:hover{
   transform: scale(1.025);
+  transition: 0.15s;
 }
 
 @media (width<=769px) {
