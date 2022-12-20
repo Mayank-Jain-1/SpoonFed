@@ -2,7 +2,7 @@ import React from 'react'
 
 const SearchItem = (props) => {
   return (
-    <a href='' className='col bg-white text-decoration-none'>
+    <a href='https://google.com' className='col bg-white text-decoration-none'>
       <div className="searchItem ">
         <img className='' src={props.imgURL} alt="img" />
         <div className='px-3 mt-3'>
