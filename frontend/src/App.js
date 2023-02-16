@@ -6,7 +6,6 @@ import Searches from "./components/Searches";
 function App() {
   return (
     <>
-    React
     <SearchHeader/>
     <Searches/>
     </>
