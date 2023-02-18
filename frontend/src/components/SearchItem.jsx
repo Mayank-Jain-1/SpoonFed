@@ -1,13 +1,13 @@
 import React from 'react'
 
-const SearchItem = (props) => {
+const SearchItem = ({imgURL, name, desc}) => {
   return (
     <a href='https://google.com' className='col bg-white text-decoration-none'>
       <div className="searchItem ">
-        <img className='' src={props.imgURL} alt="img" />
+        <img className='' src={imgURL} alt="img" />
         <div className='px-3 mt-3'>
-          <h5 className='cl-db fw-bold'>{props.name}</h5>
-          <p className='cl-dg'>{props.desc}</p>
+          <h5 className='text-primary fw-bold'>{name}</h5>
+          <p className='cl-dg'>{desc}</p>
         </div>
       </div>
     </a>

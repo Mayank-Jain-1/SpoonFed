@@ -18,22 +18,9 @@ code {
   object-fit:cover;
 }
 
-.bg-img-div{
-  position: absolute;
-  left: 0;
-  height: 480px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
 
-
-.cover{
-  position: relative;
-  height: 480px;
+.backdrop{
   background: linear-gradient(#9D0E0E10, rgba(47, 5, 5, 0.8));
-  color: white;
 }
 
 .cl-db{
