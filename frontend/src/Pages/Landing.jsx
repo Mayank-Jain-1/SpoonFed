@@ -1,12 +1,12 @@
 import React from 'react'
-import Searches from '../components/Searches'
-import SearchHeader from '../components/SearchHeader'
+import QuickSearches from '../components/QuickSearches'
+import SearchHeader from '../components/SearchHeader/SearchHeader'
 
 const Landing = () => {
   return (
     <>
     <SearchHeader/>
-    <Searches/>
+    <QuickSearches/>
     </>
   )
 }

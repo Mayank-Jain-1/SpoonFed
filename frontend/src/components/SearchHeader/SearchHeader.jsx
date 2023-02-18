@@ -1,9 +1,19 @@
-import React from "react";
-import Navbar from "./Navbar";
-import bgimage from "../Images/bg.png";
-import Logo from "./Logo";
+import React, { useState } from "react";
+import Navbar from "../Navbar";
+import bgimage from "../../Images/bg.png";
+import Logo from "../Logo";
+import CitySelect from "./CitySelect";
 
 export const SearchHeader = () => {
+
+  const [searchState, setSearchState] = useState({
+    city: '',
+    restaurant: ''
+  })
+  const handleStateChange = (e) => {
+    setSearchState({...searchState, [e.target.name]: e.target.value })
+  }
+
   return (
     <>
       <Navbar />
@@ -16,29 +26,18 @@ export const SearchHeader = () => {
           <img
             src={bgimage}
             alt=""
-            className="w-100"
-            style={{ objectFit: "cover", zIndex: "-1", minHeight: "960px" }}
+            className="w-100 -z-20"
+            style={{ objectFit: "cover", minHeight: "960px" }}
           />
         </div>
-        <Logo className='mb-4' text='Sf!' size={70}/>
-        <h2 className="title text-center mb-4  p1">
+        <Logo className="mb-4 d-none d-md-block" text="Sf!" size={70} />
+        <Logo className="mb-4 d-md-none" text="Sf!" size={50} />
+        <p className="fs-2 fw-normal text-center mb-4 p1">
           Find the best restaurants, cafés, and bars
-        </h2>
+        </p>
         <div className="row w-100 justify-content-center px-4 gx-5 gy-4">
-          <select
-            id="location"
-            name="location"
-            className="col-xl-2 col-lg-3 col-md-3 col-sm-9 col-xs-12
-          bg-white text-dark border px-3 py-3 mx-3 cl-db"
-          >
-            <option value="none">Select a location</option>
-            <option value="Ludhiana">Ludhiana</option>
-            <option value="Chandigarh">Chandigarh</option>
-            <option value="Mumbai">Mumbai</option>
-            <option value="Chennai">Chennai</option>
-            <option value="Dehradun">Dehradun</option>
-            <option value="Delhi">Delhi</option>
-          </select>
+        <CitySelect name='city' value={searchState.city} onChange={handleStateChange}/>
+
           <div
             className="d-flex col-xl-4 align-items-center col-lg-5 col-md-6 col-sm-9 col-xs-12 bg-white text-dark border px-0 mx-2 cl-dg position-relative
           "

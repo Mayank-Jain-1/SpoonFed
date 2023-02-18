@@ -36,23 +36,9 @@ code {
   left: 1rem;
 }
 
-#logo{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 140px;
-  height: 140px;
-  font-size: 70px;
-}
-
 #inpLocation{
   border: none;
   min-height: 58px;
-}
-
-.title{
-  font-size: 2rem;
-  font-weight: 400;
 }
 
 .navbar{
@@ -87,6 +73,25 @@ code {
   transition: 0.15s;
 }
 
+.-z-20{
+  z-index: -20;
+}
+.-z-10{
+  z-index: -10;
+}
+.z-0{
+  z-index: 0;
+}
+.z-10{
+  z-index: 10;
+}
+.z-20{
+  z-index: 20;
+}
+.z-30{
+  z-index: 30;
+}
+
 .searchItem img{
   min-width: 45%;
   height: 160px;
@@ -107,15 +112,6 @@ code {
 }
 
 @media (width<=769px) {
-  #logo{
-    width: 90px;
-    height: 90px;
-    font-size: 42px;
-  }
-
-  .title{
-    font-size: 28px;
-  }
 
   #inpLocation{
     min-width: 37px;

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SearchItem = ({imgURL, name, desc}) => {
+const QuickSearchItem = ({imgURL, name, desc}) => {
   return (
     <a href='https://google.com' className='col bg-white text-decoration-none'>
       <div className="searchItem ">
@@ -15,10 +15,10 @@ const SearchItem = ({imgURL, name, desc}) => {
 }
 
 
-SearchItem.defaultProps = {
+QuickSearchItem.defaultProps = {
   imgURL:'https://static.toiimg.com/photo/msid-87930581/87930581.jpg',
   name:'Lunch',
   desc:'Start your day with exclusive breakfast options'
 }
 
-export default SearchItem
+export default QuickSearchItem

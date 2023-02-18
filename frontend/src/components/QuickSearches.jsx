@@ -1,7 +1,7 @@
 import React from "react";
-import SearchItem from "./SearchItem";
+import SearchItem from "./QuicksearchItem";
 
-const Searches = () => {
+const QuickSearches = () => {
   return (
     <div className="container pt-5 px-4 px-sm-0 px-md-auto pb-5 mb-5">
       <h1 className="cl-db fw-bold">Quick Searches</h1>
@@ -27,4 +27,4 @@ const Searches = () => {
   );
 };
 
-export default Searches;
+export default QuickSearches;
