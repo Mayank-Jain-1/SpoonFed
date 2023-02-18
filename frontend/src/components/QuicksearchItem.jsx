@@ -7,7 +7,7 @@ const QuickSearchItem = ({imgURL, name, desc}) => {
         <img className='' src={imgURL} alt="img" />
         <div className='px-3 mt-3'>
           <h5 className='text-primary fw-bold'>{name}</h5>
-          <p className='cl-dg'>{desc}</p>
+          <p className='text-secondary'>{desc}</p>
         </div>
       </div>
     </a>

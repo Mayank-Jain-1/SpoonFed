@@ -23,6 +23,26 @@ code {
   background: linear-gradient(#9D0E0E10, rgba(47, 5, 5, 0.8));
 }
 
+.-z-20{
+  z-index: -20;
+}
+.-z-10{
+  z-index: -10;
+}
+.z-0{
+  z-index: 0;
+}
+.z-10{
+  z-index: 10;
+}
+.z-20{
+  z-index: 20;
+}
+.z-30{
+  z-index: 30;
+}
+
+
 .cl-db{
   color: #192F60 !important;
 }
@@ -36,9 +56,8 @@ code {
   left: 1rem;
 }
 
-#inpLocation{
-  border: none;
-  min-height: 58px;
+.outline-none{
+  outline: none;
 }
 
 .navbar{
@@ -73,24 +92,6 @@ code {
   transition: 0.15s;
 }
 
-.-z-20{
-  z-index: -20;
-}
-.-z-10{
-  z-index: -10;
-}
-.z-0{
-  z-index: 0;
-}
-.z-10{
-  z-index: 10;
-}
-.z-20{
-  z-index: 20;
-}
-.z-30{
-  z-index: 30;
-}
 
 .searchItem img{
   min-width: 45%;
