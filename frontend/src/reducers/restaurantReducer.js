@@ -1,14 +1,13 @@
 const initialState = [];
 
-const restaurantReducer = (state = initialState, action) => {
+const restaurantReducer =  (state = initialState, action) => {
   switch (action.type) {
-    case "ADD_RESTAURANT":
-      return [...state, action.restaurant];
-    case "DELETE_RESTAURANT":
-      return state.filter((restaurant) => restaurant.id !== action.id);
+    case "UPDATE_RESTAURANT":
+      return action.restaurant;
     default:
-      return state;
+     return state;
   }
 };
 
 export default restaurantReducer;
+
