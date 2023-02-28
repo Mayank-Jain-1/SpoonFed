@@ -2,6 +2,7 @@
   "name": "spoon-fed",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://localhost:4000",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
@@ -16,7 +17,9 @@
     "react-bootstrap": "^2.7.2",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
+    "react-redux": "^8.0.5",
     "react-scripts": "^5.0.1",
+    "redux": "^4.2.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

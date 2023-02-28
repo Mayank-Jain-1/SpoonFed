@@ -1,23 +1,8 @@
-body {
-  margin: 0;
-  background-color: #FBFBFB ;
-  font-family: "Poppins";
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  padding:0;
+  margin:0;
+  box-sizing: border-box;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-.bg-img{
-  z-index: -1;
-  min-width: 100%;
-  min-height: 960px;
-  object-fit:cover;
-}
-
 
 .backdrop{
   background: linear-gradient(#9D0E0E10, rgba(47, 5, 5, 0.8));
@@ -42,26 +27,8 @@ code {
   z-index: 30;
 }
 
-
-.cl-db{
-  color: #192F60 !important;
-}
-
-.cl-dg{
-  color: #8C96AB;
-}
-
-#searchIcon{
-  position: absolute;
-  left: 1rem;
-}
-
 .outline-none{
   outline: none;
-}
-
-.navbar{
-  z-index: 1;
 }
 
 #login:hover{

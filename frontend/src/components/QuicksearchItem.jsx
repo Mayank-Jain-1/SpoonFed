@@ -1,6 +1,7 @@
 import React from 'react'
 
 const QuickSearchItem = ({imgURL, name, desc}) => {
+
   return (
     <a href='https://google.com' className='col bg-white text-decoration-none'>
       <div className="searchItem ">

@@ -2,6 +2,7 @@ import React from "react";
 import SearchItem from "./QuicksearchItem";
 
 const QuickSearches = () => {
+
   return (
     <div className="container pt-5 px-4 px-sm-0 px-md-auto pb-5 mb-5">
       <h1 className="text-primary fw-bold">Quick Searches</h1>

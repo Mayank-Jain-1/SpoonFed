@@ -8,12 +8,18 @@ const filter = async (req, res) => {
     minCost: 0,
     maxCost: Number.MAX_VALUE,
     page: 1,
-    pageSize: 4,
+    pagesize: 4,
   };
-  city = city ? city.toLowerCase() : defaultFilter.city;
-  page = page ? page : defaultFilter.page;
-  pageSize = pageSize ? pageSize : defaultFilter.pageSize;
 
+  
+  let {city, cuisinesarr, cost, page, pageSize,sort} = req.query
+  let minCost = 0, maxCost = Number.MAX_VALUE;
+  
+  city = city ? city.toLowerCase() : 
+  defaultFilter.city;
+  page = page ? page : defaultFilter.page;
+  pageSize = pageSize ? pageSize : defaultFilter.pagesize;
+  
   if (cost) {
     switch (cost[0]) {
       case "<":

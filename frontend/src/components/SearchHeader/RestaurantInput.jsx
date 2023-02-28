@@ -4,7 +4,7 @@ import { BiSearch } from "react-icons/bi";
 const RestaurantInput = ({ className, name, value, onChange }) => {
   return (
     <div
-      className={`${className} d-flex align-items-center col-xl-4 col-lg-5 col-md-6 col-sm-9 col-12 bg-white text-dark border px-0 mx-2 cl-dg position-relative`}
+      className={`${className} d-flex align-items-center col-xl-4 col-lg-5 col-md-6 col-sm-9 col-12 bg-white text-dark border px-0 mx-2 text-secondary position-relative`}
     >
       <BiSearch className="mx-3 fs-4" />
       <input
