@@ -1,17 +1,27 @@
 import "./App.css";
-import React from "react";
+import axios from "axios"
+import React, { useEffect } from "react";
 import Landing from "./Pages/Landing";
-import { createStore } from "redux";
-import { Provider } from "react-redux";
+import { useDispatch } from "react-redux";
 import rootReducer from "./reducers/rootReducer";
+import { updateRestaurant } from "./actions";
 
-const store = createStore(rootReducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() );
 
 function App() {
+  
+  const dispatch = useDispatch();
+  useEffect(() => {
+    axios
+    .get("/restaurants")
+    .then((res) => {
+      dispatch(updateRestaurant(res.data));
+    })
+    .catch((err) => console.log(err));
+    // eslint-disable-next-line
+  }, []);
+  
   return (
-    <Provider store={store}>
       <Landing />
-    </Provider>
   );
 }
 
