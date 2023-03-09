@@ -49,6 +49,22 @@
   outline: none;
 }
 
+.-mb-2{
+  margin-bottom: -2px;
+}
+
+.px-sm-0{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* @media (width >= 786px) {
+  .px-sm-0{
+    padding: auto !important;
+  }
+} */
+
+
 #login:hover{
   color: #dc3545 !important;
   border-bottom: 2px solid #dc3545 !important;
@@ -118,8 +134,15 @@
   height: 60px;
 }
 
+.restaurantCoverImage{
+  height: 190px;
+}
+
 @media (width >= 768px) {
   .restNavHeader{
     height: 80px;
+  }
+  .restaurantCoverImage{
+    height: 360px;
   }
 }
