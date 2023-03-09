@@ -25,7 +25,7 @@ const RestaurantInput = ({ className, name, value, onChange }) => {
           placeholder="Search for restaurants"
         />
       </div>
-      <div style={{height: "200px"}} className="position-absolute start-0 top-100 bg-white w-100 px-2 shadow">
+      <div className="position-absolute start-0 top-100 bg-white w-100 px-2 shadow">
         <SearchResult />
       </div>
     </div>
