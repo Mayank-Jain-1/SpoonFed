@@ -8,6 +8,10 @@
   background: linear-gradient(#9D0E0E10, rgba(47, 5, 5, 0.8));
 }
 
+.fs-14{
+  font-size: 0.875rem;
+}
+
 .-z-20{
   z-index: -20;
 }
@@ -79,6 +83,10 @@
   transition: 0.15s;
 }
 
+.object-cover{
+  object-fit: cover;
+}
+
 @media (width<=769px) {
 
   #inpLocation{
@@ -86,3 +94,7 @@
   }
 }
 
+.searchResultImg{
+  height: 43px; 
+  width: 43px; 
+}

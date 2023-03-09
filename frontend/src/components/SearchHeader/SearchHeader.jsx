@@ -4,6 +4,7 @@ import Logo from "../Logo";
 import CitySelect from "./CitySelect";
 import BgImage from "./BgImage";
 import RestaurantInput from "./RestaurantInput";
+import { useSelector } from "react-redux";
 
 export const SearchHeader = () => {
   const [searchState, setSearchState] = useState({
@@ -13,6 +14,11 @@ export const SearchHeader = () => {
   const handleStateChange = (e) => {
     setSearchState({ ...searchState, [e.target.name]: e.target.value });
   };
+
+  const restaurant = useSelector((store) => store.restaurants);
+  console.log("restaurant: ", restaurant);
+
+
 
   return (
     <>
@@ -35,7 +41,10 @@ export const SearchHeader = () => {
             onChange={handleStateChange}
           />
 
-          <RestaurantInput name='restaurant' value={searchState.restaurant} onChange={handleStateChange}/>
+          <RestaurantInput name='restaurant' value={searchState.restaurant} onChange={handleStateChange}
+          className='position-relative'>
+            
+          </RestaurantInput>
         </div>
       </div>
     </>
