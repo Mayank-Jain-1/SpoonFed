@@ -17,7 +17,7 @@ const NavHeader = () => {
           Login
         </a>
         <a
-          className=" py-1 py-md-2 px-2 px-md-3 px-md-4 text-decoration-none text-white border border-white border-2 rounded d-inline-flex justify-content-center fs-14 fs-md-6"
+          className=" py-1 py-md-2 px-2 px-md-3 px-md-4 text-decoration-none text-white border border-white border-2 rounded d-inline-flex justify-content-center fs-14 fs-md-6 hover-white-red"
           href="https://google.com"
         >
           Create an account

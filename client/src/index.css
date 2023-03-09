@@ -83,6 +83,12 @@
   transition: 0.15s;
 }
 
+.hover-white-red:hover{
+  background-color: white !important;
+  color: #dc3545 !important;
+  transition: 0.15s;
+}
+
 .searchItem{
   display: flex;
   align-items: center;
