@@ -33,7 +33,15 @@ const Restaurant = () => {
         />
 
         <div className="px-3 px-md-0">
-          <h2 className="fw-semibold my-4 text-primary">{restaurant.name}</h2>
+          <div className="d-flex align-items-center">
+            <img
+              src={restaurant.thumb}
+              alt=""
+              style={{width: "52px", height: '52px'}}
+              className="object-cover restaurantCoverImage rounded-3 me-3  d-md-none"
+            />
+            <h2 className="fw-semibold my-4 text-primary">{restaurant.name}</h2>
+          </div>
           <div className="d-flex justify-content-between border-3 border-bottom align-items-end mb-3">
             <div className="">
               <button
@@ -60,8 +68,8 @@ const Restaurant = () => {
             </button>
           </div>
 
-          <div className={`${infoSelected !== "Overview" && "d-none"}`}>
-            <p className="text-primary fw-bold my-4">About this Place</p>
+          <div className={`${infoSelected !== "Overview" && "d-none"} px-3`}>
+            <p className="text-primary fw-bold mb-4 mt-5">About this Place</p>
             <p className="text-primary fw-bold my-1">Cuisines</p>
             <p className="text-primary ">{cuisines.join(", ")}</p>
             <p className="text-primary fw-bold my-1 mt-4">Average Cost</p>
@@ -72,9 +80,9 @@ const Restaurant = () => {
               } for two people (approx.)`}{" "}
             </p>
           </div>
-          <div className={`${infoSelected !== "Contact" && "d-none"}`}>
-            <p className="text-primary fw-bold mb-1 mt-4">Phone Number</p>
-            <p className="text-danger">+91 7888632012</p>
+          <div className={`${infoSelected !== "Contact" && "d-none"} px-3 `}>
+            <p className="text-primary fw-bold mb-1 mt-5">Phone Number</p>
+            <p className="text-danger mb-4">+91 7888632012</p>
             <p className="text-primary fw-bold my-1">{restaurant.name}</p>
             <p className="text-primary ">{restaurant.address}</p>
           </div>
