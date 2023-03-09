@@ -3,16 +3,16 @@ import axios from "axios"
 import React, { useEffect } from "react";
 import Landing from "./Pages/Landing";
 import { useDispatch } from "react-redux";
-import rootReducer from "./reducers/rootReducer";
 import { updateRestaurant } from "./actions";
-
+import { Routes, Route } from "react-router-dom";
+import Restaurant from "./Pages/Restaurant";
 
 function App() {
   
   const dispatch = useDispatch();
   useEffect(() => {
     axios
-    .get("/restaurants")
+    .get("/allRestaurants")
     .then((res) => {
       dispatch(updateRestaurant(res.data));
     })
@@ -21,7 +21,10 @@ function App() {
   }, []);
   
   return (
-      <Landing />
+    <Routes>
+      <Route path="/" element={<Landing />}/>
+      <Route path="/restaurant/:id" element={<Restaurant />}/>
+    </Routes>
   );
 }
 
