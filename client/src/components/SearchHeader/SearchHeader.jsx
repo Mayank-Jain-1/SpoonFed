@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Navbar from "../Navbar";
 import Logo from "../Logo";
 import CitySelect from "./CitySelect";
@@ -6,6 +6,8 @@ import BgImage from "./BgImage";
 import RestaurantInput from "./RestaurantInput";
 import { useSelector } from "react-redux";
 import SearchResult from "./SearchResult";
+
+// TODO Change the search result so that it says no result found if no retaurannt found. rather than just nothing.
 
 export const SearchHeader = () => {
 
@@ -24,7 +26,6 @@ export const SearchHeader = () => {
     return filteredRes
   }
   const filteredRestaurants = filter(city,searchValue);
-  console.log('filteredRestaurants: ', filteredRestaurants);
 
   return (
     <>

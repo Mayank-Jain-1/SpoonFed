@@ -20,6 +20,12 @@
   font-size: 0.875rem;
 }
 
+@media (width >= 786px) {
+  .fs-md-6{
+    font-size: 16px;
+  }
+}
+
 .-z-20{
   z-index: -20;
 }
@@ -105,4 +111,15 @@
 .searchResultImg{
   height: 43px; 
   width: 43px; 
+}
+
+
+.restNavHeader{
+  height: 60px;
+}
+
+@media (width >= 768px) {
+  .restNavHeader{
+    height: 80px;
+  }
 }
