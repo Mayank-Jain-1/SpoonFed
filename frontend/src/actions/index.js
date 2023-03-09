@@ -20,7 +20,7 @@ export const changeCity = (city) => {
 
 export const changeSearch = (search) => {
   return {
-    type: "CHANGE_CITY",
+    type: "CHANGE_SEARCH",
     search
   }
 }

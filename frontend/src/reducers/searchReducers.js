@@ -1,5 +1,5 @@
 const initialState = {
-  city: "Delhi",
+  city: "",
   search: "",
 };
 

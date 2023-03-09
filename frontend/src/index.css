@@ -8,6 +8,14 @@
   background: linear-gradient(#9D0E0E10, rgba(47, 5, 5, 0.8));
 }
 
+.max-h-4{
+  max-height: 300px;
+}
+
+.overflow-y-scroll{
+  overflow-y: scroll;
+}
+
 .fs-14{
   font-size: 0.875rem;
 }

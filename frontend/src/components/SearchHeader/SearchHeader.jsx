@@ -1,24 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../Navbar";
 import Logo from "../Logo";
 import CitySelect from "./CitySelect";
 import BgImage from "./BgImage";
 import RestaurantInput from "./RestaurantInput";
 import { useSelector } from "react-redux";
+import SearchResult from "./SearchResult";
 
 export const SearchHeader = () => {
-  const [searchState, setSearchState] = useState({
-    city: "",
-    restaurant: "",
-  });
-  const handleStateChange = (e) => {
-    setSearchState({ ...searchState, [e.target.name]: e.target.value });
-  };
 
+  const city = useSelector(store => store.searchInputs.city);
+  const searchValue = useSelector(store => store.searchInputs.search);
   const restaurant = useSelector((store) => store.restaurants);
-  console.log("restaurant: ", restaurant);
 
-
+  const filter = (city, search ) => {
+    let filteredRes = restaurant;
+    if(city){
+      filteredRes = filteredRes.filter(restaurant => restaurant.city_name.toLowerCase() === city.toLowerCase());
+    }
+    if(search){
+      filteredRes = filteredRes.filter(restaurant => restaurant.name.toLowerCase().includes(search.toLowerCase()))
+    }
+    return filteredRes
+  }
+  const filteredRestaurants = filter(city,searchValue);
+  console.log('filteredRestaurants: ', filteredRestaurants);
 
   return (
     <>
@@ -35,16 +41,22 @@ export const SearchHeader = () => {
           Find the best restaurants, cafés, and bars
         </p>
         <div className="row w-100 justify-content-center px-4 gx-5 gy-4">
-          <CitySelect
-            name="city"
-            value={searchState.city}
-            onChange={handleStateChange}
-          />
+          <CitySelect />
+          <div className="col-xl-4 col-lg-5 col-md-6 col-sm-9 col-12 px-0 mx-2 position-relative">
+            <RestaurantInput className="position-relative" />
+            <div
 
-          <RestaurantInput name='restaurant' value={searchState.restaurant} onChange={handleStateChange}
-          className='position-relative'>
-            
-          </RestaurantInput>
+              className={`${
+                (!searchValue && !city)  && "d-none"
+              } position-absolute start-0 top-100 bg-white w-100 px-2 shadow z-10 max-h-4 overflow-y-scroll`}
+            >
+              {
+                filteredRestaurants.map((restaurant,index) => {
+                  return <SearchResult key={index} restaurant={restaurant}/>
+                })
+              }
+            </div>
+          </div>
         </div>
       </div>
     </>
