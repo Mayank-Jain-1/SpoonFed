@@ -110,8 +110,7 @@ const FilterForm = ({ className }) => {
             );
           })}
         </div>
-
-        <div className="">
+        <div className="sort">
           <h4 className="text-primary fw-semibold fs-18 mb-10px">Sort</h4>
           <label className="sort d-flex align-items-center position-relative ps-30 text-secondary fs-14 mb-3">
             Price low to high

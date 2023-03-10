@@ -19,7 +19,7 @@ const Filter = () => {
   return (
     <div>
       <NavHeader />
-      <div className="container px-md-auto">
+      <div className="container px-md-auto mx-md-auto">
         <h1 className="fw-bold text-primary  my-3 mx-4 fs-md-1">All Places</h1>
         <div className="d-flex">
           <FilterForm className=""/>
