@@ -25,3 +25,9 @@ export const changeSearch = (search) => {
   }
 }
 
+export const changeFilterInputs = (params) => {
+  return {
+    type: "UPDATE_FILTER",
+    params: {...params}
+  }
+}
