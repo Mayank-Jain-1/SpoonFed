@@ -40,6 +40,9 @@ body{
   max-width: 100%;
 }
 
+
+
+
 .square-120{
   width: 120px;
   height: 120px;
@@ -62,6 +65,26 @@ body{
   font-size: 20px
 }
 
+@media (width < 768px) {
+  .px-md-auto{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+  .max-w-md-auto{
+    max-width: 100% !important;
+  }
+  .mx-md-auto{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+  .position-md-block{
+    position: absolute !important;
+  }
+  
+}
+
+
+
 @media (width >= 768px) {
   .fs-md-6{
     font-size: 16px !important;
@@ -72,7 +95,6 @@ body{
   .max-w-md-sm{
     max-width: 260px;
   }
-  
 }
 
 
@@ -142,29 +164,6 @@ body{
   padding-right: 0 !important;
 }
 
-.px-md-auto{
-  padding-left: 0px !important;
-  padding-right: 0px !important;
-}
-.mx-md-auto{
-  margin-left: 0px !important;
-  margin-right: 0px !important;
-}
-.position-md-block{
-  position: absolute !important;
-}
-
-@media (width >= 768px) {
-  .px-md-auto{
-    padding: auto;
-  }
-  .mx-md-auto{
-    margin: auto;
-  }
-  .position-md-block{
-    position: static !important;
-  }
-}
 
 
 #login:hover{

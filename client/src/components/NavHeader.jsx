@@ -4,7 +4,7 @@ import Logo from "./Logo";
 const NavHeader = () => {
   return (
     <div className="bg-danger restNavHeader ">
-      <div className="container mx-md-auto  bg-danger restNavHeader d-flex px-4 px-md-0 align-items-center justify-content-between ">
+      <div className="container max-w-md-auto mx-md-auto bg-danger restNavHeader d-flex px-4 px-md-0 align-items-center justify-content-between ">
         <Logo text="Sf!" size={26} className="d-none d-md-block" />
         <Logo text="Sf!" size={20} className="d-md-none" />
         <div className="d-flex justify-content-end align-items-center">

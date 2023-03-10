@@ -8,7 +8,7 @@ const filter = async (req, res) => {
     minCost: 0,
     maxCost: Number.MAX_VALUE,
     page: 1,
-    pagesize: 4,
+    pagesize: 100,
   };
 
   
