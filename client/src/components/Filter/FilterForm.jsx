@@ -18,7 +18,6 @@ const FilterForm = ({ className }) => {
     "` 1500 to ` 2000",
     "2000+",
   ];
-  console.log({ city, cuisinesChecked, cost, sort });
 
   const handleCuisineChange = (index) => {
     let checked = cuisinesChecked;

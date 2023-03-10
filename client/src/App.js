@@ -3,7 +3,7 @@ import axios from "axios"
 import React, { useEffect } from "react";
 import Landing from "./Pages/Landing";
 import { useDispatch } from "react-redux";
-import { updateRestaurant } from "./actions";
+import { updateFilteredRestaurants, updateRestaurant } from "./actions";
 import { Routes, Route } from "react-router-dom";
 import Restaurant from "./Pages/Restaurant";
 import Filter from "./Pages/Filter";
@@ -16,6 +16,7 @@ function App() {
     .get("/allRestaurants")
     .then((res) => {
       dispatch(updateRestaurant(res.data));
+      // dispatch(updateFilteredRestaurants(res.data));
     })
     .catch((err) => console.log(err));
     // eslint-disable-next-line

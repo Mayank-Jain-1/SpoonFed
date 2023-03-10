@@ -31,3 +31,10 @@ export const changeFilterInputs = (params) => {
     params: {...params}
   }
 }
+
+export const updateFilteredRestaurants = (restaurants) => {
+  return {
+    type: "UPDATE_FILTERED_RESTAURANTS",
+    restaurants: restaurants
+  }
+}
