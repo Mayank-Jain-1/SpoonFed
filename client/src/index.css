@@ -4,12 +4,33 @@
   box-sizing: border-box;
 }
 
+body{
+  background-color: #FBFBFB !important;
+}
+
 .backdrop{
   background: linear-gradient(#9D0E0E10, rgba(47, 5, 5, 0.8));
 }
 
+.bg-white-800{
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.bg-black-800{
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.bg-black-700{
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.bg-black-600{
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
 .max-h-4{
   max-height: 300px;
+}
+
+.max-w-100{
+  max-width: 100%;
 }
 
 .overflow-y-scroll{
@@ -22,7 +43,7 @@
 
 @media (width >= 786px) {
   .fs-md-6{
-    font-size: 16px;
+    font-size: 16px !important;
   }
 }
 
@@ -120,7 +141,7 @@
 }
 
 .object-cover{
-  object-fit: cover;
+  object-fit: cover !important;
 }
 
 @media (width<=769px) {
@@ -144,11 +165,22 @@
   height: 190px;
 }
 
+
+.carouselItem{
+  display: flex;
+  height: 300px;
+  justify-content: center;
+}
+
+
 @media (width >= 768px) {
   .restNavHeader{
     height: 80px;
   }
   .restaurantCoverImage{
     height: 360px;
+  }
+  .carouselItem{
+    height: 500px;
   }
 }

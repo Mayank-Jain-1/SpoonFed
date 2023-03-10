@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import NavHeader from "../components/NavHeader";
+import GalleryCarousel from "../components/Restaurant/GalleryCarousel";
+
 
 const Restaurant = () => {
   const [restaurant, setRestaurant] = useState({});
@@ -9,9 +11,9 @@ const Restaurant = () => {
   const cuisines = restaurant.Cuisine
     ? restaurant.Cuisine.map((cuisine) => cuisine.name)
     : [];
-  console.log("cuisines: ", cuisines);
   // IMPROVEMENT: I understand that making a get request is unneccessary as we have all the restaurants already in the redux state. But just for the sake of assignment and more backend reliability i have made this api and used it to get the restaurants data.
   const [infoSelected, setInfoSelected] = useState("Overview");
+  const [carouselOpen, setCarouselOpen] = useState(false);
 
   useEffect(() => {
     axios
@@ -23,21 +25,31 @@ const Restaurant = () => {
   }, []);
 
   return (
-    <div className="">
+    <>
       <NavHeader />
+      {/* Image and carousel button */}
       <div className="container px-sm-0">
-        <img
-          src={restaurant.thumb}
-          alt=""
-          className="w-100 object-cover mt-3 mt-md-5 restaurantCoverImage "
-        />
-
+        <div className="mt-3 mt-md-5 position-relative">
+          <img
+            src={restaurant.thumb}
+            alt=""
+            className="w-100 object-cover  restaurantCoverImage "
+          />
+          <button
+            onClick={() => setCarouselOpen(true)}
+            className="position-absolute end-0 bottom-0 border-0 text-primary fw-bold py-2 py-md-3 px-3 px-md-4 rounded-2 bg-white-800 m-2 m-md-3 fs-14 fs-md-6
+          "
+          >
+            Click to see image gallery
+          </button>
+        </div>
+        {/* Information about the Restaurant */}
         <div className="px-3 px-md-0">
           <div className="d-flex align-items-center">
             <img
               src={restaurant.thumb}
               alt=""
-              style={{width: "52px", height: '52px'}}
+              style={{ width: "52px", height: "52px" }}
               className="object-cover restaurantCoverImage rounded-3 me-3  d-md-none"
             />
             <h2 className="fw-semibold my-4 text-primary">{restaurant.name}</h2>
@@ -69,8 +81,13 @@ const Restaurant = () => {
           </div>
 
           <div className={`${infoSelected !== "Overview" && "d-none"} px-3`}>
-            <p className="text-primary fw-bold mb-4 mt-5">About this Place</p>
-            <p className="text-primary fw-bold my-1">Cuisines</p>
+            <h5 className="text-primary fw-bold mt-5">About this Place</h5>
+            <p className="text-primary">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi
+              dolore corrupti nihil harum, reprehenderit neque repellendus nam
+              eveniet perspiciatis? Accusamus quisquam rerum illo voluptatibus.
+            </p>
+            <p className="text-primary fw-bold my-1 mt-4">Cuisines</p>
             <p className="text-primary ">{cuisines.join(", ")}</p>
             <p className="text-primary fw-bold my-1 mt-4">Average Cost</p>
             <p className="text-primary ">
@@ -88,7 +105,10 @@ const Restaurant = () => {
           </div>
         </div>
       </div>
-    </div>
+      {/* Carousel Below */}
+      <GalleryCarousel flag={carouselOpen} setFlag={setCarouselOpen} images={restaurant.Images}/>
+      
+    </>
   );
 };
 
