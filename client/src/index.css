@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100&display=swap');
+
 * {
   padding:0;
   margin:0;
@@ -6,6 +8,7 @@
 
 body{
   background-color: #FBFBFB !important;
+  font-family: 'Poppins', sans-serif !important;
 }
 
 .backdrop{
@@ -33,6 +36,8 @@ body{
   max-width: 100%;
 }
 
+
+
 .overflow-y-scroll{
   overflow-y: scroll;
 }
@@ -41,11 +46,28 @@ body{
   font-size: 0.875rem;
 }
 
+.fs-18{
+  font-size: 18px;
+}
+
+.fs-md-1{
+  font-size: 20px
+}
+
 @media (width >= 786px) {
   .fs-md-6{
     font-size: 16px !important;
   }
+  .fs-md-1{
+    font-size: 36px !important;
+  }
+  .max-w-md-sm{
+    max-width: 260px;
+  }
+  
 }
+
+
 
 .-z-20{
   z-index: -20;
@@ -74,16 +96,38 @@ body{
   margin-bottom: -2px;
 }
 
+.mb-10px{
+  margin-bottom: 10px;
+}
+
+.ps-30{
+  padding-left: 30px;
+}
+
+.p-10px{
+  padding: 10px;
+}
+
 .px-sm-0{
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
 
-/* @media (width >= 786px) {
-  .px-sm-0{
+.px-md-auto{
+  padding: auto 0px;
+}
+.position-md-block{
+  position: absolute !important;
+}
+
+@media (width >= 786px) {
+  .px-md-auto{
     padding: auto !important;
   }
-} */
+  .position-md-block{
+    position: static !important;
+  }
+}
 
 
 #login:hover{
@@ -168,7 +212,7 @@ body{
 
 .carouselItem{
   display: flex;
-  height: 300px;
+  height: 250px;
   justify-content: center;
 }
 
@@ -183,4 +227,69 @@ body{
   .carouselItem{
     height: 500px;
   }
+}
+
+
+.checkmark{
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid #3A5075;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  position: absolute;
+  left: 0;
+  transition: 0.1s;
+}
+
+.cuisine:hover input ~ .checkmark{
+  background-color: #00000020;
+}
+.cuisine input:checked ~ .checkmark {
+  background-color: #3A5075;
+  transition: 0.1s;
+}
+
+.radioCircle{
+  border: 1.5px solid #192F60;
+  background-color: white;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+}
+
+.radioInnerCircle{
+  position: absolute;
+  left: 2.5px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+}
+
+.cost input:checked ~ .radioInnerCircle{
+  background-color: #192F60;
+  transition: 0.2s;
+}
+
+.cost:hover .radioInnerCircle{
+  background-color: #00000020;
+}
+
+.sort input:checked ~ .radioInnerCircle{
+  background-color: #192F60;
+  transition: 0.2s;
+}
+
+.sort:hover .radioInnerCircle{
+  background-color: #00000020;
+}
+
+.applyFilter:hover{
+  background: red !important;
+  color: white !important;
+  transition: 0.25s;
 }

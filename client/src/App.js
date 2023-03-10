@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { updateRestaurant } from "./actions";
 import { Routes, Route } from "react-router-dom";
 import Restaurant from "./Pages/Restaurant";
+import Filter from "./Pages/Filter";
 
 function App() {
   
@@ -24,6 +25,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Landing />}/>
       <Route path="/restaurant/:id" element={<Restaurant />}/>
+      <Route path="/filter" element={<Filter />}/>
     </Routes>
   );
 }

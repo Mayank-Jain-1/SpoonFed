@@ -44,7 +44,7 @@ const Restaurant = () => {
           </button>
         </div>
         {/* Information about the Restaurant */}
-        <div className="px-3 px-md-0">
+        <div className="px-3 px-md-0 pb-5 mb-5">
           <div className="d-flex align-items-center">
             <img
               src={restaurant.thumb}
