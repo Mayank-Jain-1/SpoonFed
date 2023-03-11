@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import NavHeader from "../components/NavHeader";
 import GalleryCarousel from "../components/Restaurant/GalleryCarousel";
+import Order from "../components/Restaurant/Order";
 
 
 const Restaurant = () => {
@@ -50,9 +51,9 @@ const Restaurant = () => {
               src={restaurant.thumb}
               alt=""
               style={{ width: "52px", height: "52px" }}
-              className="object-cover restaurantCoverImage rounded-3 me-3  d-md-none"
+              className="object-cover restaurantCoverImage rounded-3 me-3 mx-md-3"
             />
-            <h2 className="fw-semibold my-4 text-primary">{restaurant.name}</h2>
+            <h2 className="fw-bold my-4 text-primary">{restaurant.name}</h2>
           </div>
           <div className="d-flex justify-content-between border-3 border-bottom align-items-end mb-3">
             <div className="">
@@ -107,7 +108,7 @@ const Restaurant = () => {
       </div>
       {/* Carousel Below */}
       <GalleryCarousel flag={carouselOpen} setFlag={setCarouselOpen} images={restaurant.Images}/>
-      
+      <Order restaurant={restaurant}/>
     </>
   );
 };
