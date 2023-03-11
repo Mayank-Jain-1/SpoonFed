@@ -9,7 +9,7 @@ import axios from "axios";
 
 //TODO : Convert the checkboxes and the radio circles to component also if possible these inputs also to components.
 
-const FilterForm = ({ className }) => {
+const FilterForm = ({ className, changeFilterOpen }) => {
   const dispatch = useDispatch();
   const { city, cuisines, cuisinesChecked, cost, sort } = useSelector(
     (store) => store.filterInputs
@@ -50,12 +50,12 @@ const FilterForm = ({ className }) => {
       })
       .then((res) => dispatch(updateFilteredRestaurants(res.data)))
       .catch((err) => console.log(err));
-
+      changeFilterOpen(false);
   };
 
   return (
     <div
-      className={`${className} px-3 px-md-0 position-md-block w-100 max-w-md-sm mx-md-4`}
+      className={`${className} px-3 px-md-0 position-abs-md-block w-100 max-w-md-sm mx-md-4`}
     >
       <form
         id="filters"

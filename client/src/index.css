@@ -95,9 +95,10 @@ body{
   .w-sm-auto{
     max-width: 100% !important;
   }
-  .position-md-block{
+  .position-abs-md-block{
     position: absolute !important;
   }
+  
 }
 
 

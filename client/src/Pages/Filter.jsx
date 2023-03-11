@@ -9,6 +9,7 @@ import { changeFilterInputs, updateFilteredRestaurants } from "../actions";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import PageinationButton from "../components/Filter/PageinationButton";
 import EndResult from "../components/Filter/EndResult";
+import {BsChevronDown, BsChevronUp} from 'react-icons/bs'
 
 const Filter = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,8 @@ const Filter = () => {
   const pageSize = 2;
   const [pageIndex, setPageIndex] = useState(0);
   const filteredRestaurants = useSelector((store) => store.filteredRestaurants);
-  const [heading, setHeading] = useState("All the best places")
+  const [heading, setHeading] = useState("All the best Restaurants")
+  const [filtersOpen, setFiltersOpen] = useState(false)
 
   useEffect(() => {
     if (params.get("city")) {
@@ -29,9 +31,17 @@ const Filter = () => {
     if (params.get("cuisine")) {
       let cuisine = params.get("cuisine");
       const index = cuisines.indexOf(cuisine);
+
       if (index !== -1) {
         let checked = cuisinesChecked;
+        checked.fill(false);
         checked[index] = true;
+        dispatch(changeFilterInputs({ cuisinesChecked: checked }));
+      }else if(cuisine === "Indian"){
+        let checked = cuisinesChecked;
+        checked.fill(false);
+        checked[0] = true;
+        checked[1] = true;
         dispatch(changeFilterInputs({ cuisinesChecked: checked }));
       }
     }
@@ -56,7 +66,7 @@ const Filter = () => {
 
   useEffect(() => {
     setPageIndex(0);
-    setHeading(city ? "Places in " + city : "All the best Places");
+    setHeading(city ? "Restaurants in " + city : "All the best Restaurants");
   },[filteredRestaurants])
 
   return (
@@ -64,8 +74,17 @@ const Filter = () => {
       <NavHeader />
       <div className="container px-md-auto mx-md-auto w-sm-auto">
         <h1 className="fw-bold text-primary  my-3 my-md-4 mx-4 fs-md-1">{heading}</h1>
+        <div className="w-100 px-3 mb-4 d-md-none">
+        <button
+        onClick={() => setFiltersOpen(!filtersOpen)} className="w-100 border border-secondary p-10px fs-14 d-flex justify-content-between text-primary fw-semibold bg-white">
+          <p className="mb-0">Filters/Sort</p>
+          <div className="">
+            {filtersOpen ? <BsChevronUp /> : <BsChevronDown />}
+          </div>
+        </button>
+        </div>
         <div className="d-flex">
-          <FilterForm className="" />
+          <FilterForm className={`${!filtersOpen && "d-none"} d-md-block z-20`} changeFilterOpen={setFiltersOpen}/>
           <div className="FilterResults  px-md-3 me-md-2 w-100">
             <div className="min-h-650">
               {filteredRestaurants &&
