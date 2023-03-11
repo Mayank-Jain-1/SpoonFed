@@ -32,8 +32,16 @@ body{
   box-shadow: 0px 3px 10px 1px rgb(0 0 0 / 20%);
 }
 
+.h-300{
+  height: 300px;
+}
+
 .max-h-4{
   max-height: 300px;
+}
+
+.min-h-650{
+  min-height: 650px;
 }
 
 .max-w-100{
@@ -43,11 +51,16 @@ body{
 
 
 
+
+.square-36{
+  width: 36px;
+  height: 36px;
+}
+
 .square-120{
   width: 120px;
   height: 120px;
 }
-
 
 .overflow-y-scroll{
   overflow-y: scroll;
@@ -328,4 +341,9 @@ body{
   background: red !important;
   color: white !important;
   transition: 0.25s;
+}
+
+.pageSelected{
+  background-color: #8c96ab !important;
+  color: white !important;
 }

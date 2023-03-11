@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  changeCity,
   changeFilterInputs,
   updateFilteredRestaurants,
 } from "../../actions";
@@ -37,7 +36,7 @@ const FilterForm = ({ className }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     let filteredCuisines = [];
-    cuisinesChecked.map((flag, index) => {
+    cuisinesChecked.forEach((flag, index) => {
       if (flag) filteredCuisines.push(cuisines[index].toLowerCase());
     });
     axios
@@ -51,6 +50,7 @@ const FilterForm = ({ className }) => {
       })
       .then((res) => dispatch(updateFilteredRestaurants(res.data)))
       .catch((err) => console.log(err));
+
   };
 
   return (

@@ -2,13 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 //TODO : inspite of taking full restaurant only take the required information as props.
 
-const FilterResult = ({ restaurant }) => {
+const FilterResult = ({ restaurant,className }) => {
   const cuisines = restaurant.Cuisine
     ? restaurant.Cuisine.map((cuisine) => cuisine.name)
     : [];
 
   return (
-    <Link to={"/restaurant/" + restaurant._id} className="d-block text-decoration-none product shadow-md bg-white mb-36 w-100 px-35 py-25">
+    <Link to={"/restaurant/" + restaurant._id} className={` ${className} d-block text-decoration-none product shadow-md bg-white mb-36 w-100 px-35 py-25`}>
       <div className="productHead d-flex pb-30 border-2 border-bottom align-items-center">
         <img
           src={restaurant.thumb}

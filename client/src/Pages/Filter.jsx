@@ -6,6 +6,9 @@ import FilterResult from "../components/Filter/FilterResult";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { changeFilterInputs, updateFilteredRestaurants } from "../actions";
+import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+import PageinationButton from "../components/Filter/PageinationButton";
+import EndResult from "../components/Filter/EndResult";
 
 const Filter = () => {
   const dispatch = useDispatch();
@@ -13,8 +16,9 @@ const Filter = () => {
   const { city, cuisines, cuisinesChecked, cost, sort } = useSelector(
     (store) => store.filterInputs
   );
-  const filteredRestaurants = useSelector(store => store.filteredRestaurants)
-  console.log('filteredRestaurants: ', filteredRestaurants);
+  const pageSize = 2;
+  const [pageIndex, setPageIndex] = useState(0);
+  const filteredRestaurants = useSelector((store) => store.filteredRestaurants);
 
   useEffect(() => {
     if (params.get("city")) {
@@ -31,7 +35,7 @@ const Filter = () => {
       }
     }
     let filteredCuisines = [];
-    cuisinesChecked.map((flag, index) => {
+    cuisinesChecked.forEach((flag, index) => {
       if (flag) filteredCuisines.push(cuisines[index].toLowerCase());
     });
     axios
@@ -45,7 +49,13 @@ const Filter = () => {
       })
       .then((res) => dispatch(updateFilteredRestaurants(res.data)))
       .catch((err) => console.log(err));
+      // eslint-disable-next-line
   }, []);
+
+
+  useEffect(() => {
+    setPageIndex(0);
+  },[filteredRestaurants])
 
   return (
     <div>
@@ -55,11 +65,65 @@ const Filter = () => {
         <div className="d-flex">
           <FilterForm className="" />
           <div className="FilterResults  px-md-3 me-md-2 w-100">
-            {filteredRestaurants && filteredRestaurants.map((restaurant,index) => {
-              return (
-                <FilterResult key={index} restaurant={restaurant}/>
-                )
-            })}
+            <div className="min-h-650">
+              {filteredRestaurants &&
+                filteredRestaurants.map((restaurant, index) => {
+                  if (
+                    pageSize * pageIndex <= index &&
+                    index < pageSize * pageIndex + pageSize
+                  ) {
+                    return (
+                      <FilterResult
+                        className="max-h-300"
+                        key={index}
+                        restaurant={restaurant}
+                      />
+                    );
+                  }
+                  else{
+                    return "";
+                  }
+                })}
+              {pageSize * pageIndex <= filteredRestaurants.length &&
+                filteredRestaurants.length < pageSize * pageIndex + pageSize && <EndResult index={filteredRestaurants.length}/>}
+            </div>
+            <div className="w-100 border-2 d-flex justify-content-center">
+              <div className="d-flex align-items-center justify-content-evenly">
+                <PageinationButton
+                  placeholder={<AiOutlineLeft className="text-secondary" />}
+                  onClick={() => {
+                    if (pageIndex > 0) setPageIndex(pageIndex - 1);
+                  }}
+                />
+                {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => {
+                  return (
+                    <PageinationButton
+                      className={
+                        pageIndex === num - 1
+                          ? "bg-secondary text-white"
+                          : "bg-transparent text-secondary"
+                      }
+                      placeholder={num}
+                      onClick={() => setPageIndex(num - 1)}
+                      disabled={
+                        Math.ceil((filteredRestaurants.length + 1) / 2) < num
+                      }
+                    />
+                  );
+                })}
+
+                <PageinationButton
+                  placeholder={<AiOutlineRight className="text-secondary " />}
+                  onClick={() => {
+                    if (
+                      pageIndex <
+                      Math.ceil((filteredRestaurants.length + 1) / pageSize) - 1
+                    )
+                      setPageIndex(pageIndex + 1);
+                  }}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
