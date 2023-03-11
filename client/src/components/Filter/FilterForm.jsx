@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { changeCity, changeFilterInputs } from "../../actions";
+import {
+  changeCity,
+  changeFilterInputs,
+  updateFilteredRestaurants,
+} from "../../actions";
 import { BsCheckLg } from "react-icons/bs";
+import axios from "axios";
 
 //TODO : Convert the checkboxes and the radio circles to component also if possible these inputs also to components.
 
@@ -29,6 +34,24 @@ const FilterForm = ({ className }) => {
     dispatch(changeFilterInputs(pair));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let filteredCuisines = [];
+    cuisinesChecked.map((flag, index) => {
+      if (flag) filteredCuisines.push(cuisines[index].toLowerCase());
+    });
+    axios
+      .get("/restaurants/filter", {
+        params: {
+          city: city,
+          cuisinesarr: filteredCuisines,
+          cost: cost,
+          sort: sort,
+        },
+      })
+      .then((res) => dispatch(updateFilteredRestaurants(res.data)))
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div
@@ -96,7 +119,7 @@ const FilterForm = ({ className }) => {
               >
                 {label}
                 <input
-                  onChange={() => handleRadioChange({"cost":currcost})}
+                  onChange={() => handleRadioChange({ cost: currcost })}
                   checked={cost === currcost}
                   type="radio"
                   name="cost"
@@ -114,32 +137,35 @@ const FilterForm = ({ className }) => {
           <label className="sort d-flex align-items-center position-relative ps-30 text-secondary fs-14 mb-3">
             Price low to high
             <input
-              onChange={() => handleRadioChange({"sort": "low"})}
+              onChange={() => handleRadioChange({ sort: "low" })}
               checked={sort === "low"}
               type="radio"
               name="sortdirection"
               value="low"
               className="opacity-0"
-              />
+            />
             <span className="radioCircle"></span>
             <span className="radioInnerCircle"></span>
           </label>
           <label className="sort d-flex align-items-center position-relative ps-30 text-secondary fs-14 mb-3">
             Price high to low
             <input
-            onChange={() => handleRadioChange({"sort": "high"})}
-            checked={sort === "high"}
-            type="radio"
-            name="sortdirection"
-            value="high"
-            className="opacity-0"
+              onChange={() => handleRadioChange({ sort: "high" })}
+              checked={sort === "high"}
+              type="radio"
+              name="sortdirection"
+              value="high"
+              className="opacity-0"
             />
             <span className="radioCircle"></span>
             <span className="radioInnerCircle"></span>
           </label>
         </div>
 
-        <button className="applyFilter text-danger bg-white border border-danger fs-6 rounded-3 fw-semibold w-100 py-2 mt-4">
+        <button
+          onClick={(e) => handleSubmit(e)}
+          className="applyFilter text-danger bg-white border border-danger fs-6 rounded-3 fw-semibold w-100 py-2 mt-4"
+        >
           Apply
         </button>
       </form>

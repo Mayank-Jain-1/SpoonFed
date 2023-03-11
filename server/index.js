@@ -12,7 +12,7 @@ const getRestuarantById = require("./controllers/getRestaurantById.js");
 app.listen(4000);
 app.use(express.json());
 app.use((req, res, next) => {
-  console.log(req.method + ":" + req.url);
+  console.log(req.method + ":" + req.url  + '\n');
   next();
 });
 

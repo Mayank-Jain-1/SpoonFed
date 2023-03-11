@@ -30,10 +30,8 @@ const FilterResult = ({ restaurant }) => {
         <div className="features text-primary ms-4">
           <p className="mb-2">{cuisines.join(", ")}</p>
           <p className="mb-0">
-            ₹
-            {` ${restaurant.cost - (restaurant.cost % 100)} - ${
-              restaurant.cost - (restaurant.cost % 100) + 100
-            }`}
+            ₹{" "}
+            {restaurant.cost}
           </p>
         </div>
       </div>
