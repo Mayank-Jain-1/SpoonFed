@@ -18,7 +18,7 @@ const FilterResult = ({ restaurant,className }) => {
         <div className="placeDesc ms-4">
           <h2 className="text-primary fw-bold">{restaurant.name}</h2>
           <h6 className="text-primary">{restaurant.locality}</h6>
-          <p className="text-primary mb-0 fw-light">{restaurant.address}</p>
+          <p className="text-primary mb-0 fw-light">{restaurant.address.split(' ').slice(0,7).join(" ") + "..."}</p>
         </div>
       </div>
 

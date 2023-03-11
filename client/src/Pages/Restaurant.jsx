@@ -12,6 +12,8 @@ const Restaurant = () => {
   const cuisines = restaurant.Cuisine
     ? restaurant.Cuisine.map((cuisine) => cuisine.name)
     : [];
+  const [orderOpen, setOrderOpen] = useState(false)
+
   // IMPROVEMENT: I understand that making a get request is unneccessary as we have all the restaurants already in the redux state. But just for the sake of assignment and more backend reliability i have made this api and used it to get the restaurants data.
   const [infoSelected, setInfoSelected] = useState("Overview");
   const [carouselOpen, setCarouselOpen] = useState(false);
@@ -24,7 +26,7 @@ const Restaurant = () => {
 
     // eslint-disable-next-line
   }, []);
-
+  
   return (
     <>
       <NavHeader />
@@ -76,7 +78,7 @@ const Restaurant = () => {
                 Contact
               </button>
             </div>
-            <button className="bg-danger text-white py-2 px-3 border-0 rounded-2 mb-3">
+            <button onClick={() => setOrderOpen(true)} className="bg-danger text-white py-2 px-3 border-0 rounded-2 mb-3">
               Place and order
             </button>
           </div>
@@ -108,7 +110,7 @@ const Restaurant = () => {
       </div>
       {/* Carousel Below */}
       <GalleryCarousel flag={carouselOpen} setFlag={setCarouselOpen} images={restaurant.Images}/>
-      <Order restaurant={restaurant}/>
+      <Order flag={orderOpen} restaurant={restaurant} setFlag={setOrderOpen}/>
     </>
   );
 };

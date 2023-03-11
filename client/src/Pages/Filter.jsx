@@ -72,7 +72,7 @@ const Filter = () => {
   return (
     <div>
       <NavHeader />
-      <div className="container px-md-auto mx-md-auto w-sm-auto">
+      <div className="container-fluid px-lg-4 px-md-0 px-0 max-w-xl">
         <h1 className="fw-bold text-primary  my-3 my-md-4 mx-4 fs-md-1">{heading}</h1>
         <div className="w-100 px-3 mb-4 d-md-none">
         <button
@@ -95,7 +95,7 @@ const Filter = () => {
                   ) {
                     return (
                       <FilterResult
-                        className="max-h-300"
+                        className="max-h-400"
                         key={index}
                         restaurant={restaurant}
                       />
@@ -109,14 +109,14 @@ const Filter = () => {
                 filteredRestaurants.length < pageSize * pageIndex + pageSize && <EndResult index={filteredRestaurants.length}/>}
             </div>
             <div className="w-100 border-2 d-flex justify-content-center">
-              <div className="d-flex align-items-center justify-content-evenly">
+              <div className="d-flex align-items-center justify-content-evenly my-3">
                 <PageinationButton
                   placeholder={<AiOutlineLeft className="text-secondary" />}
                   onClick={() => {
                     if (pageIndex > 0) setPageIndex(pageIndex - 1);
                   }}
                 />
-                {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => {
+                {[1, 2, 3, 4, 5].map((num) => {
                   return (
                     <PageinationButton
                       className={`${

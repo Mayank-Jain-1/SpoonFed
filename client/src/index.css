@@ -102,6 +102,11 @@ body{
   font-size: 20px
 }
 
+.max-h-400{
+  max-height: 400px !important; 
+}
+
+
 
 @media (width < 768px) {
 
@@ -141,7 +146,9 @@ body{
   
 }
 
-
+.max-w-xl{
+  max-width: 1200px !important;
+}
 
 @media (width >= 768px) {
   .fs-md-6{
@@ -152,6 +159,9 @@ body{
   }
   .max-w-md-sm{
     max-width: 260px;
+  }
+  .max-w-md-100{
+    max-width: 100% !important;
   }
 }
 
