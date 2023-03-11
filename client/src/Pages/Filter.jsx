@@ -19,6 +19,7 @@ const Filter = () => {
   const pageSize = 2;
   const [pageIndex, setPageIndex] = useState(0);
   const filteredRestaurants = useSelector((store) => store.filteredRestaurants);
+  const [heading, setHeading] = useState("All the best places")
 
   useEffect(() => {
     if (params.get("city")) {
@@ -55,13 +56,14 @@ const Filter = () => {
 
   useEffect(() => {
     setPageIndex(0);
+    setHeading(city ? "Places in " + city : "All the best Places");
   },[filteredRestaurants])
 
   return (
     <div>
       <NavHeader />
-      <div className="container px-md-auto mx-md-auto">
-        <h1 className="fw-bold text-primary  my-3 mx-4 fs-md-1">All Places</h1>
+      <div className="container px-md-auto mx-md-auto w-sm-auto">
+        <h1 className="fw-bold text-primary  my-3 my-md-4 mx-4 fs-md-1">{heading}</h1>
         <div className="d-flex">
           <FilterForm className="" />
           <div className="FilterResults  px-md-3 me-md-2 w-100">
@@ -98,11 +100,15 @@ const Filter = () => {
                 {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => {
                   return (
                     <PageinationButton
-                      className={
+                      className={`${
                         pageIndex === num - 1
-                          ? "bg-secondary text-white"
-                          : "bg-transparent text-secondary"
+                        ? "bg-secondary text-white"
+                        : "bg-transparent text-secondary"
+                      } ${
+                        Math.ceil((filteredRestaurants.length + 1) / 2) < num && "opacity-50"
                       }
+                      `
+                    }
                       placeholder={num}
                       onClick={() => setPageIndex(num - 1)}
                       disabled={

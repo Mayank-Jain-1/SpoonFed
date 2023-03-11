@@ -78,6 +78,7 @@ body{
   font-size: 20px
 }
 
+
 @media (width < 768px) {
   .px-md-auto{
     padding-left: 0px !important;
@@ -86,14 +87,17 @@ body{
   .max-w-md-auto{
     max-width: 100% !important;
   }
+  
   .mx-md-auto{
     margin-left: 0px !important;
     margin-right: 0px !important;
   }
+  .w-sm-auto{
+    max-width: 100% !important;
+  }
   .position-md-block{
     position: absolute !important;
   }
-  
 }
 
 
@@ -237,7 +241,7 @@ body{
   object-fit: cover !important;
 }
 
-@media (width<=769px) {
+@media (width < 768px) {
 
   #inpLocation{
     min-width: 37px;
