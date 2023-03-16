@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import OrderItem from "./OrderItem";
 import { RxCross1 } from "react-icons/rx";
 
-const Order = ({ restaurant,flag,setFlag }) => {
+const Order = ({ restaurant,setPopup }) => {
   //TODO: THis data should be in the fetched data but cannot add new data to the mongo. Can be done later
 
   const [items, setItems] = useState([
     {
       id: 1,
-      name: "Gobhi Munchurian",
+      name: "Gobi Munchurian",
       amount: 0,
       price: 89,
       desc: "Deep-fried cauliflower florets tossed in pungent spices to form a flavorsome dry curry",
@@ -56,17 +56,19 @@ const Order = ({ restaurant,flag,setFlag }) => {
   }
 
   return (
-    <div className={`${flag ? "d-flex" : "d-none"} position-fixed w-100 h-100  flex-column top-0 start-0 align-items-center justify-content-center z-20`}>
+    <div className={`d-flex position-fixed w-100 h-100  flex-column top-0 start-0 align-items-center justify-content-center z-20`}>
       <div className="max-w-mobile-100 max-h-mobile-100 max-w-550 overflow-scroll h-mobile-100 shadow-md">
         
         {/* Upper Div With heading and Items */}
         <div className="max-w-mobile-100 max-w-550 max-h-600 max-h-mobile-100 h-100 border w-100 bg-white p-md-5 px-4 py-5   position-relative">
-          <button onClick={() => setFlag(false)} className="bg-transparent border-0 position-absolute top-0 end-0 p-4 fs-3 text-primary fw-semibold d-flex align-items-center justify-content-center" >
+          <button onClick={() => setPopup("")} className="bg-transparent border-0 position-absolute top-0 end-0 p-4 fs-3 text-primary fw-semibold d-flex align-items-center justify-content-center" >
             <RxCross1 />
           </button>
           <h2 className="text-primary fw-semibold">{restaurant.name}</h2>
-          {/*  */}
-          <div className="overflow-scroll max-h-mobile-100 max-h-500 pb-5 pb-md-0 mb-md-0">
+
+          {/* Div with the Items  */}
+
+          <div className="overflow-y-scroll max-h-mobile-100 max-h-500 pb-5 pb-md-0 mb-md-0">
             {items.map((item, index) => {
               return (
                 <OrderItem

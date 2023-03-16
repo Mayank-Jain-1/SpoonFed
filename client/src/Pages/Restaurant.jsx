@@ -5,14 +5,16 @@ import NavHeader from "../components/NavHeader";
 import GalleryCarousel from "../components/Restaurant/GalleryCarousel";
 import Order from "../components/Restaurant/Order";
 
-
 const Restaurant = () => {
   const [restaurant, setRestaurant] = useState({});
   let { id } = useParams();
   const cuisines = restaurant.Cuisine
     ? restaurant.Cuisine.map((cuisine) => cuisine.name)
     : [];
-  const [orderOpen, setOrderOpen] = useState(false)
+  
+  
+
+  const [popup, setPopup] = useState('')
 
   // IMPROVEMENT: I understand that making a get request is unneccessary as we have all the restaurants already in the redux state. But just for the sake of assignment and more backend reliability i have made this api and used it to get the restaurants data.
   const [infoSelected, setInfoSelected] = useState("Overview");
@@ -26,12 +28,12 @@ const Restaurant = () => {
 
     // eslint-disable-next-line
   }, []);
-  
+
   return (
     <>
       <NavHeader />
       {/* Image and carousel button */}
-      <div className="container px-sm-0">
+      <div className="container-fluid px-0 px-sm-3 px-md-4 px-lg-5 max-w-xl">
         <div className="mt-3 mt-md-5 position-relative">
           <img
             src={restaurant.thumb}
@@ -62,7 +64,7 @@ const Restaurant = () => {
               <button
                 onClick={() => setInfoSelected("Overview")}
                 className={`bg-transparent border-0
-              py-2 px-3 px-sm-4 text-primary fw-bold -mb-2 ${
+              py-2 px-2 px-sm-4 text-primary fw-bold -mb-2 ${
                 infoSelected === "Overview" && "border-bottom border-danger"
               }`}
               >
@@ -71,15 +73,18 @@ const Restaurant = () => {
               <button
                 onClick={() => setInfoSelected("Contact")}
                 className={`bg-transparent border-0
-              py-2 px-3 px-sm-4 text-primary fw-bold -mb-2 ${
+              py-2 px-2 px-sm-4 text-primary fw-bold -mb-2 ${
                 infoSelected === "Contact" && "border-bottom border-danger"
               }`}
               >
                 Contact
               </button>
             </div>
-            <button onClick={() => setOrderOpen(true)} className="bg-danger text-white py-2 px-3 border-0 rounded-2 mb-3">
-              Place and order
+            <button
+              onClick={() => setPopup('order')}
+              className="bg-danger text-white py-2 px-3 border-0 rounded-2 mb-3"
+            >
+              Place an order
             </button>
           </div>
 
@@ -109,8 +114,19 @@ const Restaurant = () => {
         </div>
       </div>
       {/* Carousel Below */}
-      <GalleryCarousel flag={carouselOpen} setFlag={setCarouselOpen} images={restaurant.Images}/>
-      <Order flag={orderOpen} restaurant={restaurant} setFlag={setOrderOpen}/>
+      <GalleryCarousel
+        flag={carouselOpen}
+        setFlag={setCarouselOpen}
+        images={restaurant.Images}
+      />
+      {popup === 'order' && (
+        <Order
+          // flag={orderOpen}
+          restaurant={restaurant}
+          setPopup={setPopup}
+        />
+      )}
+      
     </>
   );
 };
