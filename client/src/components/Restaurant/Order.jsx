@@ -3,6 +3,7 @@ import OrderItem from "./OrderItem";
 import { RxCross1 } from "react-icons/rx";
 
 const Order = ({ restaurant,setPopup }) => {
+  
   //TODO: THis data should be in the fetched data but cannot add new data to the mongo. Can be done later
 
   const [items, setItems] = useState([
@@ -43,6 +44,7 @@ const Order = ({ restaurant,setPopup }) => {
         "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg/800px-Eq_it-na_pizza-margherita_sep2005_sml.jpg",
     },
   ]);
+  console.log(items)
 
   const [totalCost, setTotalCost] = useState(0);
 

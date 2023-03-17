@@ -1,9 +1,9 @@
+import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import NavHeader from "../components/NavHeader";
 import GalleryCarousel from "../components/Restaurant/GalleryCarousel";
-import Login from "../components/Restaurant/Login";
 import Order from "../components/Restaurant/Order";
 
 const Restaurant = () => {
@@ -13,7 +13,9 @@ const Restaurant = () => {
     ? restaurant.Cuisine.map((cuisine) => cuisine.name)
     : [];
   
+  const {isAuthorized, loginwithredirect} = useAuth0();
   
+
 
   const [popup, setPopup] = useState('')
 
@@ -128,6 +130,7 @@ const Restaurant = () => {
         />
       ) : popup === 'payment' && (
         <>
+
         </>
       )
     

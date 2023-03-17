@@ -7,7 +7,7 @@ import RegisterBtn from "./NavHeader/RegisterBtn";
 import LogoutBtn from "./NavHeader/LogoutBtn";
 
 const NavHeader = () => {
-   const { user,isAuthenticated } = useAuth0();
+   const { user, isAuthenticated, isLoading } = useAuth0();
 
    return (
       <div className="bg-danger restNavHeader ">
@@ -15,11 +15,14 @@ const NavHeader = () => {
             <Logo text="Sf!" size={26} className="d-none d-md-block" />
             <Logo text="Sf!" size={20} className="d-md-none" />
             <div className="d-flex justify-content-end align-items-center">
-               {!isAuthenticated ? (
+               {!isAuthenticated && !isLoading ? (
                   <>
                      <LoginBtn />
                      <RegisterBtn />
                   </>
+               ) : isLoading ? (
+                  <p className="text-white fs-18 mx-3 mb-0">Waiting for Authorization...</p>
+                  
                ) : (
                   <>
                      <p className="text-white mb-0 me-4 fs-6">{user.name}</p>

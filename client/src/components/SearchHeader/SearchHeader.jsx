@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../Navbar";
+import Navbar from "../HomeNavbar";
 import Logo from "../Logo";
 import CitySelect from "./CitySelect";
 import BgImage from "./BgImage";
