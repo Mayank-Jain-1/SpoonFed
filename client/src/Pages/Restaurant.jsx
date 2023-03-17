@@ -126,8 +126,9 @@ const Restaurant = () => {
           restaurant={restaurant}
           setPopup={setPopup}
         />
-      ) : popup === 'login' && (
-        <Login />
+      ) : popup === 'payment' && (
+        <>
+        </>
       )
     
     }

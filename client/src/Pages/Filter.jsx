@@ -116,9 +116,10 @@ const Filter = () => {
                     if (pageIndex > 0) setPageIndex(pageIndex - 1);
                   }}
                 />
-                {[1, 2, 3, 4, 5].map((num) => {
+                {[1, 2, 3, 4, 5].map((num,index) => {
                   return (
                     <PageinationButton
+                      key={index}
                       className={`${
                         pageIndex === num - 1
                         ? "bg-secondary text-white"
