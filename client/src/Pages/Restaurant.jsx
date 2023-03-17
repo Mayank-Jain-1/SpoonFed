@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import NavHeader from "../components/NavHeader";
 import GalleryCarousel from "../components/Restaurant/GalleryCarousel";
+import Login from "../components/Restaurant/Login";
 import Order from "../components/Restaurant/Order";
 
 const Restaurant = () => {
@@ -119,13 +120,17 @@ const Restaurant = () => {
         setFlag={setCarouselOpen}
         images={restaurant.Images}
       />
-      {popup === 'order' && (
+      {popup === 'order' ? (
         <Order
           // flag={orderOpen}
           restaurant={restaurant}
           setPopup={setPopup}
         />
-      )}
+      ) : popup === 'login' && (
+        <Login />
+      )
+    
+    }
       
     </>
   );

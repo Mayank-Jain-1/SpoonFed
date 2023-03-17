@@ -91,7 +91,7 @@ const Order = ({ restaurant,setPopup }) => {
             <h4 className="mb-0 fw-semibold">Subtotal</h4>
             <h4 className="mb-0 fw-semibold">₹ {totalCost}</h4>
           </div>
-          <button className="bg-danger text-white border-0 rounded-3 btn py-3 px-4">
+          <button onClick={() => setPopup('login')} className="bg-danger text-white border-0 rounded-3 btn py-3 px-4">
             Pay Now
           </button>
         </div>
