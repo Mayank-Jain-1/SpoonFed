@@ -16,9 +16,11 @@ function App() {
       .get("/allRestaurants")
       .then((res) => {
         dispatch(updateRestaurant(res.data));
+        console.log('restaurant data fetched succesfully')
         // dispatch(updateFilteredRestaurants(res.data));
       })
       .catch((err) => console.log(err));
+      console.log('couldnt fetch the restaurant data');
     // eslint-disable-next-line
   }, []);
 

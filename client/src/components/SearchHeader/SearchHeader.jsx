@@ -16,16 +16,19 @@ export const SearchHeader = () => {
   const restaurant = useSelector((store) => store.restaurants);
 
   const filter = (city, search ) => {
-    let filteredRes = restaurant || [];
-    if(city){
-      filteredRes = filteredRes.filter(restaurant => restaurant.city_name.toLowerCase() === city.toLowerCase());
+    let filteredRes = restaurant;
+    if(filteredRes.length > 0){
+      if(city){
+        filteredRes = filteredRes?.filter(restaurant => restaurant.city_name.toLowerCase() === city.toLowerCase());
+      }
+      if(search){
+        filteredRes = filteredRes?.filter(restaurant => restaurant.name.toLowerCase().includes(search.toLowerCase()))
+      }
     }
-    if(search){
-      filteredRes = filteredRes.filter(restaurant => restaurant.name.toLowerCase().includes(search.toLowerCase()))
-    }
-    return filteredRes || [];
+    return filteredRes;
   }
   const filteredRestaurants = filter(city,searchValue);
+  console.log('filteredRestaurants: ', filteredRestaurants);
   return (
     <>
       <Navbar />
