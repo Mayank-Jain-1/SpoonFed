@@ -16,7 +16,7 @@ export const SearchHeader = () => {
   const restaurant = useSelector((store) => store.restaurants);
 
   const filter = (city, search ) => {
-    let filteredRes = restaurant;
+    let filteredRes = restaurant || [];
     if(city){
       filteredRes = filteredRes.filter(restaurant => restaurant.city_name.toLowerCase() === city.toLowerCase());
     }
