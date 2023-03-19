@@ -23,7 +23,7 @@ export const SearchHeader = () => {
     if(search){
       filteredRes = filteredRes.filter(restaurant => restaurant.name.toLowerCase().includes(search.toLowerCase()))
     }
-    return filteredRes;
+    return filteredRes || [];
   }
   const filteredRestaurants = filter(city,searchValue);
   return (
