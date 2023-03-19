@@ -52,7 +52,7 @@ export const SearchHeader = () => {
               } position-absolute start-0 top-100 bg-white w-100 px-2 shadow z-10 max-h-4 overflow-y-scroll`}
             >
               {
-                filteredRestaurants.map((restaurant,index) => {
+                filteredRestaurants && filteredRestaurants.map((restaurant,index) => {
                   return <SearchResult key={index} restaurant={restaurant}/>
                 })
               }
