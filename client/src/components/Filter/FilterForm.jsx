@@ -40,7 +40,7 @@ const FilterForm = ({ className, changeFilterOpen }) => {
       if (flag) filteredCuisines.push(cuisines[index].toLowerCase());
     });
     axios
-      .get("/restaurants/filter", {
+      .get("/api/restaurants/filter", {
         params: {
           city: city,
           cuisinesarr: filteredCuisines,

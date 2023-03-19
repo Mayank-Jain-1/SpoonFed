@@ -50,7 +50,7 @@ const Filter = () => {
       if (flag) filteredCuisines.push(cuisines[index].toLowerCase());
     });
     axios
-      .get("/restaurants/filter", {
+      .get("/api/restaurants/filter", {
         params: {
           city: city,
           cuisinesarr: filteredCuisines,
@@ -67,6 +67,7 @@ const Filter = () => {
   useEffect(() => {
     setPageIndex(0);
     setHeading(city ? "Restaurants in " + city : "All the best Restaurants");
+    // eslint-disable-next-line
   },[filteredRestaurants])
 
   return (

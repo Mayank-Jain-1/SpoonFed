@@ -8,6 +8,7 @@ const Restaurants = require("./models/restaurants.js");
 
 const filter = require("./controllers/filter");
 const getRestuarantById = require("./controllers/getRestaurantById.js");
+const createOtp = require("./controllers/otpverfication.js");
 
 app.listen(4000);
 app.use(express.json());
@@ -16,10 +17,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/restaurants/filter", filter);
+app.get("/api/restaurants/filter", filter);
 
-
-app.get("/allRestaurants", async (req, res) => {
+app.get("/api/allRestaurants", async (req, res) => {
   Restaurants.find((err, data) => {
     if (err) {
       console.error(err);
@@ -28,4 +28,6 @@ app.get("/allRestaurants", async (req, res) => {
   });
 });
 
-app.get("/restaurant", getRestuarantById);
+app.get("/api/restaurant", getRestuarantById);
+
+app.get('/api/otp',createOtp)
