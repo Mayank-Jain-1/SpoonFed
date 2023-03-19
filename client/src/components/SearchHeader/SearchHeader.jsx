@@ -15,6 +15,7 @@ export const SearchHeader = () => {
   const searchValue = useSelector(store => store.searchInputs.search);
 
   const restaurant = useSelector((store) => store.restaurants);
+
   const filter = (city, search ) => {
     let filteredRes = restaurant;
     if(filteredRes.length > 0){
@@ -55,7 +56,7 @@ export const SearchHeader = () => {
               } position-absolute start-0 top-100 bg-white w-100 px-2 shadow z-10 max-h-4 overflow-y-scroll`}
             >
               {
-                (typeof filteredRestaurants === "object") && filteredRestaurants.map((restaurant,index) => {
+                filteredRestaurants?.map((restaurant,index) => {
                   return <SearchResult key={index} restaurant={restaurant}/>
                 })
               }

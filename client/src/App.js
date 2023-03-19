@@ -15,23 +15,23 @@ function App() {
     console.log('testStrig: ', testStrig);
 
    useEffect(() => {
-      axios
-         .get("/test")
-         .them((res) => {
-            console.log(res.data);
-            setTestStrig(res.data);
-         })
-         .catch((err) => console.log(err));
+      // axios
+      //    .get("/test")
+      //    .them((res) => {
+      //       console.log(res.data);
+      //       setTestStrig(res.data);
+      //    })
+      //    .catch((err) => console.log(err));
 
-      axios
-         .get("/allRestaurants")
-         .then((res) => {
-            dispatch(updateRestaurant(res.data));
-            console.log("restaurant data fetched succesfully");
-            // dispatch(updateFilteredRestaurants(res.data));
-         })
-         .catch((err) => console.log(err));
-      console.log("couldnt fetch the restaurant data");
+      // axios
+      //    .get("/allRestaurants")
+      //    .then((res) => {
+      //       dispatch(updateRestaurant(res.data));
+      //       console.log("restaurant data fetched succesfully");
+      //       // dispatch(updateFilteredRestaurants(res.data));
+      //    })
+      //    .catch((err) => console.log(err));
+      // console.log("couldnt fetch the restaurant data");
       // eslint-disable-next-line
    }, []);
 
