@@ -13,8 +13,8 @@ export const SearchHeader = () => {
 
   const city = useSelector(store => store.searchInputs.city);
   const searchValue = useSelector(store => store.searchInputs.search);
-  const restaurant = useSelector((store) => store.restaurants);
 
+  const restaurant = useSelector((store) => store.restaurants);
   const filter = (city, search ) => {
     let filteredRes = restaurant;
     if(filteredRes.length > 0){
@@ -29,6 +29,7 @@ export const SearchHeader = () => {
   }
   const filteredRestaurants = filter(city,searchValue);
   console.log('filteredRestaurants: ', filteredRestaurants);
+
   return (
     <>
       <Navbar />
