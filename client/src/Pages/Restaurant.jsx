@@ -21,6 +21,46 @@ const Restaurant = () => {
       else setPopup(value);
    };
 
+   const [items, setItems] = useState([
+      {
+        id: 1,
+        name: "Gobi Munchurian",
+        amount: 0,
+        price: 89,
+        desc: "Deep-fried cauliflower florets tossed in pungent spices to form a flavorsome dry curry",
+        image:
+          "https://myfoodstory.com/wp-content/uploads/2021/10/Veg-Manchurian-FI-1.jpg",
+      },
+      {
+        id: 2,
+        name: "Farmhouse Pizza",
+        amount: 0,
+        price: 199,
+        desc: "Freshly baked pizza with thin crust. Dont miss the chance to save the savories.",
+        image:
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg/800px-Eq_it-na_pizza-margherita_sep2005_sml.jpg",
+      },
+      {
+        id: 3,
+        name: "Honey Pancakes",
+        amount: 0,
+        price: 119,
+        desc: "Sweet pancakes with the sweet topping of Honey. You cant get more of it.",
+        image:
+          "https://static.onecms.io/wp-content/uploads/sites/43/2022/02/16/21014-Good-old-Fashioned-Pancakes-mfs_001.jpg",
+      },
+      {
+        id: 4,
+        name: "Farmhouse Pizza",
+        amount: 0,
+        price: 199,
+        desc: "Freshly baked pizza with thin crust. Dont miss the chance to save the savories.",
+        image:
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg/800px-Eq_it-na_pizza-margherita_sep2005_sml.jpg",
+      },
+    ]);
+   const [totalCost, setTotalCost] = useState(0)
+
    // IMPROVEMENT: I understand that making a get request is unneccessary as we have all the restaurants already in the redux state. But just for the sake of assignment and more backend reliability i have made this api and used it to get the restaurants data.
    const [infoSelected, setInfoSelected] = useState("Overview");
    const [carouselOpen, setCarouselOpen] = useState(false);
@@ -136,6 +176,10 @@ const Restaurant = () => {
          {popup === "order" ? (
             <Order
                // flag={orderOpen}
+               items={items}
+               setItems={setItems}
+               totalCost={totalCost}
+               setTotalCost={setTotalCost}
                restaurant={restaurant}
                setPopup={handlePopupChange}
             />
