@@ -23,10 +23,9 @@ export const SearchHeader = () => {
     if(search){
       filteredRes = filteredRes.filter(restaurant => restaurant.name.toLowerCase().includes(search.toLowerCase()))
     }
-    return filteredRes
+    return filteredRes;
   }
   const filteredRestaurants = filter(city,searchValue);
-
   return (
     <>
       <Navbar />
@@ -52,7 +51,7 @@ export const SearchHeader = () => {
               } position-absolute start-0 top-100 bg-white w-100 px-2 shadow z-10 max-h-4 overflow-y-scroll`}
             >
               {
-                filteredRestaurants && filteredRestaurants.map((restaurant,index) => {
+                (typeof filteredRestaurants === "object") && filteredRestaurants.map((restaurant,index) => {
                   return <SearchResult key={index} restaurant={restaurant}/>
                 })
               }
