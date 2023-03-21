@@ -150,6 +150,8 @@ body{
   max-width: 1200px !important;
 }
 
+
+
 @media (width >= 768px) {
   .fs-md-6{
     font-size: 16px !important;
@@ -160,6 +162,7 @@ body{
   .max-w-md-sm{
     max-width: 260px;
   }
+
   .max-w-md-100{
     max-width: 100% !important;
   }

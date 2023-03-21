@@ -22,6 +22,8 @@ const Restaurant = () => {
       else setPopup(value);
    };
 
+   //TODO: THis data should be in the fetched data but cannot add new data to the mongo. Can be done later
+
    const [items, setItems] = useState([
       {
          id: 1,
@@ -73,7 +75,7 @@ const Restaurant = () => {
 
    if (popup === "payment" && totalCost === 0) {
       alert("Select Some item to Buy");
-      setPopup('order');
+      setPopup("order");
    }
    return (
       <>
@@ -185,9 +187,15 @@ const Restaurant = () => {
                setPopup={handlePopupChange}
             />
          ) : (
-            popup === "payment" && <>
-               <Payment />
-            </>
+            popup === "payment" && (
+               <>
+                  <Payment 
+                  amount={totalCost}
+                  restaurant={restaurant}
+                  setPopup={handlePopupChange}
+                  />
+               </>
+            )
          )}
       </>
    );

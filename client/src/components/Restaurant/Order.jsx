@@ -4,49 +4,6 @@ import { RxCross1 } from "react-icons/rx";
 
 const Order = ({ restaurant,setPopup,items,setItems,totalCost,setTotalCost }) => {
   
-  //TODO: THis data should be in the fetched data but cannot add new data to the mongo. Can be done later
-
-  // const [items, setItems] = useState([
-  //   {
-  //     id: 1,
-  //     name: "Gobi Munchurian",
-  //     amount: 0,
-  //     price: 89,
-  //     desc: "Deep-fried cauliflower florets tossed in pungent spices to form a flavorsome dry curry",
-  //     image:
-  //       "https://myfoodstory.com/wp-content/uploads/2021/10/Veg-Manchurian-FI-1.jpg",
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Farmhouse Pizza",
-  //     amount: 0,
-  //     price: 199,
-  //     desc: "Freshly baked pizza with thin crust. Dont miss the chance to save the savories.",
-  //     image:
-  //       "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg/800px-Eq_it-na_pizza-margherita_sep2005_sml.jpg",
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "Honey Pancakes",
-  //     amount: 0,
-  //     price: 119,
-  //     desc: "Sweet pancakes with the sweet topping of Honey. You cant get more of it.",
-  //     image:
-  //       "https://static.onecms.io/wp-content/uploads/sites/43/2022/02/16/21014-Good-old-Fashioned-Pancakes-mfs_001.jpg",
-  //   },
-  //   {
-  //     id: 4,
-  //     name: "Farmhouse Pizza",
-  //     amount: 0,
-  //     price: 199,
-  //     desc: "Freshly baked pizza with thin crust. Dont miss the chance to save the savories.",
-  //     image:
-  //       "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg/800px-Eq_it-na_pizza-margherita_sep2005_sml.jpg",
-  //   },
-  // ]);
-  // console.log(items);
-
-  // const [totalCost, setTotalCost] = useState(items.reduce((partialSum,a) => partialSum + a.price, 0));
 
 
   function handleUpdateAmount(index, amount) {
