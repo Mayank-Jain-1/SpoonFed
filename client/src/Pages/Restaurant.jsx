@@ -190,9 +190,10 @@ const Restaurant = () => {
             popup === "payment" && (
                <>
                   <Payment 
-                  amount={totalCost}
+                  totalCost={totalCost}
                   restaurant={restaurant}
                   setPopup={handlePopupChange}
+                  items={items.filter(item => item.amount > 0)}
                   />
                </>
             )

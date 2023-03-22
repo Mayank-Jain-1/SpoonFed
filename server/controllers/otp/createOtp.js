@@ -25,7 +25,7 @@ const createOtp = async (req, res) => {
                process.env.EMAIL_JS_SERVICE_ID,
                process.env.EMAIL_JS_TEMPLATE_ID,
                templateParams,
-               process.env.EMAIL_JS_PUBLIC_KEY,
+               process.env.EMAIL_JS_PUBLIC_KEY
             )
             .then(
                (response) => {
@@ -36,13 +36,19 @@ const createOtp = async (req, res) => {
                },
                (error) => {
                   res.status(480).json({
-                     message: "Couldn't send otp, check your email or try again.",
-                     status: res.statusCode
-                  })
+                     message:
+                        "Couldn't send otp, check your email or try again.",
+                     status: res.statusCode,
+                  });
                }
-            );
-
-         
+            )
+            .catch((err) => {
+               console.log(err);
+               res.status(400).json({
+                  message: "Couldn't send otp, check your email or try again.",
+                  status: res.statusCode,
+               });
+            });
       }
    );
 };

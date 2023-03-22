@@ -3,7 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { RxCross1 } from "react-icons/rx";
 import axios from "axios";
 
-const Payment = ({ amount, restaurant, setPopup }) => {
+const Payment = ({ totalCost, restaurant, setPopup, items }) => {
    const { user } = useAuth0();
    const { email, name } = user;
    const [message, setMessage] = useState({
@@ -16,26 +16,44 @@ const Payment = ({ amount, restaurant, setPopup }) => {
          color: "text-white",
       });
    };
-   const [otpVerification, setOtpVerification] = useState(false);
+   const [otpVerification, setOtpVerification] = useState(true);
    const [otpEntered, setOtpEntered] = useState("");
+
    const handleOtpChange = (e) => {
       setOtpEntered(e.target.value);
    };
-
    const createNewOTP = async () => {
+      removeMessage();
       const postData = {
          email: email,
          name: name,
       };
-      await axios.post("/api/createotp", postData);
-      setMessage({
-         text: "New OTP sent",
-         color: "text-secondary",
-      });
+      const createRes = await axios
+         .post("/api/createotp", postData)
+         .then(
+            (res) => {
+               return res.data;
+            },
+            (err) => {
+               return err.response.data;
+            }
+         )
+         .catch((err) => console.log(err));
+      console.log("hi");
+      if (createRes.status === 200) {
+         setMessage({
+            text: createRes.message,
+            color: "text-secondary",
+         });
+      } else {
+         setMessage({
+            text: createRes.message,
+            color: "text-danger",
+         });
+      }
    };
-
    const [addressDone, setAddressDone] = useState(false);
-   const [address, setAddress] = useState("");
+   const [address, setAddress] = useState(user.address || "");
    const handleAddressChange = (e) => {
       setAddress(e.target.value);
    };
@@ -87,20 +105,18 @@ const Payment = ({ amount, restaurant, setPopup }) => {
 
       console.log(verifyRes);
    };
-
    const handleConfirmOrder = () => {
-      if (!addressDone) {
-         handleAddressSubmit();
-      } else if (!otpVerification) {
-         setMessage({
+      if (!addressDone) return handleAddressSubmit();
+      if (!otpVerification)
+         return setMessage({
             text: "Verify OTP first",
             color: "text-danger",
          });
-      }
+      axios.post('/api/placeorder');
    };
 
    useEffect(() => {
-      if (addressDone) {
+      if (addressDone && !otpVerification) {
          createNewOTP();
       }
    }, [email, name, addressDone]);
@@ -109,7 +125,7 @@ const Payment = ({ amount, restaurant, setPopup }) => {
       <div
          className={`d-flex position-fixed w-100 h-100  flex-column top-0 start-0 align-items-center justify-content-center z-20 `}
       >
-         <div className="max-w-mobile-100 max-h-mobile-100 max-w-550 h-mobile-100 shadow-md ">
+         <div className="max-w-mobile-100 max-h-mobile-100 max-w-550 h-mobile-100 shadow-md overflow-y-scroll ">
             {/* Upper Div With heading and Items */}
             <div className="max-w-mobile-100 max-w-550 max-h-600 max-h-mobile-100 border h-mobile-100 w-100 bg-white p-md-5 px-4 py-5 position-relative">
                <button
@@ -150,8 +166,9 @@ const Payment = ({ amount, restaurant, setPopup }) => {
                ) : !otpVerification ? (
                   <>
                      <h2 className="text-primary fw-semibold">
-                        Paying <span className="text-danger">₹ {amount}</span>{" "}
-                        to {restaurant.name}
+                        Paying{" "}
+                        <span className="text-danger">₹ {totalCost}</span> to{" "}
+                        {restaurant.name}
                      </h2>
                      <div className="pt-4">
                         <label htmlFor="email my-2">
@@ -188,12 +205,55 @@ const Payment = ({ amount, restaurant, setPopup }) => {
                   </>
                ) : (
                   <>
-                     <h2 className="text-primary fw-semibold">
-                        Paying <span className="text-danger">₹ {amount}</span>{" "}
-                        to {restaurant.name}
+                     <h2 className="text-primary fw-semibold mb-4">
+                        Paying{" "}
+                        <span className="text-danger">₹ {totalCost}</span> to{" "}
+                        {restaurant.name}
                      </h2>
-                     <p>Delivery At {address}</p>
-                     <p>All verifications are done you can complete your order by clicking confirm order now.</p>
+                     <p className="fs-14">
+                        Delivery at address<br />
+                        {address}
+                     </p>
+                     <h4 className="text-primary fs-18 fw-semibold">Items</h4>
+                     <table className="table table-striped fs-14">
+                        <thead>
+                           <tr className="text-primary">
+                              <th>S No.</th>
+                              <th>Item Name</th>
+                              <th>Price (₹) </th>
+                              <th>Quantity</th>
+                              <th>Total</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           {items.map((item, index) => {
+                              return (
+                                 <tr>
+                                    <td>{index}</td>
+                                    <td>{item.name}</td>
+                                    <td>{item.price}</td>
+                                    <td>{item.amount}</td>
+                                    <td>{item.price * item.amount}</td>
+                                 </tr>
+                              );
+                           })}
+                           <tr className="table-primary">
+                              <td>--</td>
+                              <td>Total Cost</td>
+                              <td>--</td>
+                              <td>
+                                 {items.reduce((total, item) => {
+                                    return total + item.amount;
+                                 }, 0)}
+                              </td>
+                              <td>{totalCost}</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <p className="fs-14">
+                        All verifications are done you can complete your order
+                        by clicking confirm order now.
+                     </p>
                   </>
                )}
             </div>
