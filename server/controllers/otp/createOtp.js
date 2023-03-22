@@ -29,7 +29,7 @@ const createOtp = async (req, res) => {
                process.env.EMAIL_JS_PUBLIC_KEY,
             )
             .then(
-               (response) => {a
+               (response) => {
                   res.status(200).json({
                      message: "Otp sent to " + email,
                      status: res.statusCode,
