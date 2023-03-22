@@ -5,7 +5,6 @@ const emailjs = require("@emailjs/browser");
 const createOtp = async (req, res) => {
    const { name, email } = req.body;
    const createdOTP = Math.floor(((Math.random() * 1000000) % 900000) + 99999);
-   console.log(email);
    OTP.updateOne(
       { email: email },
       {
@@ -30,13 +29,13 @@ const createOtp = async (req, res) => {
             )
             .then(
                (response) => {
-                  res.status(200).json({
+                  res.status(201).json({
                      message: "Otp sent to " + email,
                      status: res.statusCode,
                   });
                },
                (error) => {
-                  res.status(410).json({
+                  res.status(480).json({
                      message: "Couldn't send otp, check your email or try again.",
                      status: res.statusCode
                   })

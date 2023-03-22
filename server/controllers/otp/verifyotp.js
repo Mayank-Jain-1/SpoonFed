@@ -15,13 +15,13 @@ const verifyOtp = async (req, res) => {
    const resDelay = (resTime.getTime() - createdTime.getTime()) / 1000; 
    console.log('resDelay: ', resDelay);
    if(resDelay > 180){
-      return res.status(401).json({
+      return res.status(408).json({
          message: "Otp verification timed out",
          status: res.statusCode
       })
    }
    if(otp !== realOtp){
-      return res.status(402).json({
+      return res.status(420).json({
          message: "Verification failed, try again",
          status: res.statusCode
       })
