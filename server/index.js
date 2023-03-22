@@ -1,6 +1,6 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const app = express();
+const dotenv = require('dotenv').config();
 const connectDB = require("./service/connect.js");
 connectDB();
 
@@ -10,6 +10,7 @@ const filter = require("./controllers/filter");
 const getRestuarantById = require("./controllers/getRestaurantById.js");
 const createOtp = require("./controllers/otp/createOtp.js");
 const verifyOtp = require("./controllers/otp/verifyotp.js");
+
 
 app.listen(4000);
 app.use(express.json());

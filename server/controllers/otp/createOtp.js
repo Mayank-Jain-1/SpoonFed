@@ -1,21 +1,49 @@
 const OTP = require("../../models/otp");
+const nodemailer = require("nodemailer");
+const emailjs = require("@emailjs/browser");
 
 const createOtp = async (req, res) => {
-   const { email } = req.body;
+   const { name, email } = req.body;
+   const createdOTP = Math.floor(((Math.random() * 1000000) % 900000) + 99999);
+   console.log(email);
    OTP.updateOne(
       { email: email },
       {
          email: email,
-         otp: Math.floor(((Math.random() * 1000000) % 900000) + 99999),
-         time: new Date()
+         otp: createdOTP,
+         time: new Date(),
       },
       { upsert: true },
-      () => {
-         console.log("made the email otp successfuly now");
-         res.status(200).json({
-            message: "made the email otp successfulyy",
-            status: 200,
-         });
+      async () => {
+         const templateParams = {
+            name: name,
+            OTP: createdOTP,
+            to: email,
+         };
+
+         emailjs
+            .send(
+               process.env.EMAIL_JS_SERVICE_ID,
+               process.env.EMAIL_JS_TEMPLATE_ID,
+               templateParams,
+               process.env.EMAIL_JS_PUBLIC_KEY,
+            )
+            .then(
+               (response) => {a
+                  res.status(200).json({
+                     message: "Otp sent to " + email,
+                     status: res.statusCode,
+                  });
+               },
+               (error) => {
+                  res.status(410).json({
+                     message: "Couldn't send otp, check your email or try again.",
+                     status: res.statusCode
+                  })
+               }
+            );
+
+         
       }
    );
 };
