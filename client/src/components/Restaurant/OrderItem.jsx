@@ -14,7 +14,7 @@ const OrderItem = ({ name, desc, price, image, amount, setItems }) => {
         <p className="fs-14">{desc}</p>
       </div>
       <div className="ms-3 ms-md-5 d-flex flex-column  align-items-center position-relative h-100">
-        <img src={image} alt="" className="square-90 rounded-3" />
+        <img src={image} alt="" className="square-90 rounded-3 object-cover" />
         <div className="d-flex position-absolute  top-100 translate-middle-y shadow-md p-1 bg-white">
           <button
             onClick={() => {

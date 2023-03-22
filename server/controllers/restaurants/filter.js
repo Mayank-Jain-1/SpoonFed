@@ -1,4 +1,4 @@
-const Restaurants = require("../models/restaurants");
+const Restaurants = require("../../models/restaurants");
 
 const filter = async (req, res) => {
   const restaurants = await Restaurants.find();

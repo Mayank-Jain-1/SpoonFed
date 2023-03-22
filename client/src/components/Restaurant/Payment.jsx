@@ -16,7 +16,7 @@ const Payment = ({ totalCost, restaurant, setPopup, items }) => {
          color: "text-white",
       });
    };
-   const [otpVerification, setOtpVerification] = useState(true);
+   const [otpVerification, setOtpVerification] = useState(false);
    const [otpEntered, setOtpEntered] = useState("");
 
    const handleOtpChange = (e) => {
@@ -106,13 +106,39 @@ const Payment = ({ totalCost, restaurant, setPopup, items }) => {
       console.log(verifyRes);
    };
    const handleConfirmOrder = () => {
+      removeMessage();
       if (!addressDone) return handleAddressSubmit();
       if (!otpVerification)
          return setMessage({
             text: "Verify OTP first",
             color: "text-danger",
          });
-      axios.post('/api/placeorder');
+      const postData = {
+         email: email,
+         name: name,
+         address: address,
+         totalCost: totalCost,
+         order: items.map((item) => {
+            return {
+               id: item.id,
+               name: item.name,
+               price: item.price,
+               quantity: item.amount,
+            };
+         }),
+      };
+      axios.post("/api/placeorder", postData).then(
+         (res) => {
+            alert(res.data.message);
+            setPopup("");
+         },
+         (err) => {
+            setMessage({
+               text: err.response.data.message,
+               color: "text-danger",
+            });
+         }
+      );
    };
 
    useEffect(() => {
@@ -125,9 +151,9 @@ const Payment = ({ totalCost, restaurant, setPopup, items }) => {
       <div
          className={`d-flex position-fixed w-100 h-100  flex-column top-0 start-0 align-items-center justify-content-center z-20 `}
       >
-         <div className="max-w-mobile-100 max-h-mobile-100 max-w-550 h-mobile-100 shadow-md overflow-y-scroll ">
+         <div className="h-mobile-100 max-h-mobile-100 w-100 max-w-md-550 shadow-md overflow-y-scroll ">
             {/* Upper Div With heading and Items */}
-            <div className="max-w-mobile-100 max-w-550 max-h-600 max-h-mobile-100 border h-mobile-100 w-100 bg-white p-md-5 px-4 py-5 position-relative">
+            <div className="w-100  max-w-md-550 max-h-600 max-h-mobile-100 border h-mobile-100  bg-white p-md-5 px-4 py-5 position-relative">
                <button
                   onClick={() => setPopup("")}
                   className="bg-transparent border-0 position-absolute top-0 end-0 p-4 fs-3 text-primary fw-semibold d-flex align-items-center justify-content-center"
@@ -210,8 +236,8 @@ const Payment = ({ totalCost, restaurant, setPopup, items }) => {
                         <span className="text-danger">₹ {totalCost}</span> to{" "}
                         {restaurant.name}
                      </h2>
-                     <p className="fs-14">
-                        Delivery at address<br />
+                     <p className="fs-14 text-primary">
+                        Delivery at address: <br />
                         {address}
                      </p>
                      <h4 className="text-primary fs-18 fw-semibold">Items</h4>
@@ -228,7 +254,7 @@ const Payment = ({ totalCost, restaurant, setPopup, items }) => {
                         <tbody>
                            {items.map((item, index) => {
                               return (
-                                 <tr>
+                                 <tr key={index}>
                                     <td>{index}</td>
                                     <td>{item.name}</td>
                                     <td>{item.price}</td>
@@ -253,6 +279,13 @@ const Payment = ({ totalCost, restaurant, setPopup, items }) => {
                      <p className="fs-14">
                         All verifications are done you can complete your order
                         by clicking confirm order now.
+                     </p>
+                     <p
+                        className={`${
+                           !message.text ? "text-white" : message.color
+                        }`}
+                     >
+                        {message.text ? message.text : "."}
                      </p>
                   </>
                )}

@@ -162,7 +162,9 @@ body{
   .max-w-md-sm{
     max-width: 260px;
   }
-
+  .max-w-md-550{
+    max-width: 550px;
+  }
   .max-w-md-100{
     max-width: 100% !important;
   }

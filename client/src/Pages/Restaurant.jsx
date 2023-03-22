@@ -51,11 +51,11 @@ const Restaurant = () => {
       },
       {
          id: 4,
-         name: "Farmhouse Pizza",
+         name: "Idli Vada",
          amount: 0,
-         price: 199,
-         desc: "Freshly baked pizza with thin crust. Dont miss the chance to save the savories.",
-         image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg/800px-Eq_it-na_pizza-margherita_sep2005_sml.jpg",
+         price: 89,
+         desc: "Steam cooked idlis, vadas with sambar chutney. It cannot go wrong.",
+         image: "https://t4.ftcdn.net/jpg/04/65/28/87/360_F_465288715_F3uc0aZMhzSbNbftEzHSb6RfUVQfCHeU.jpg",
       },
    ]);
    const [totalCost, setTotalCost] = useState(0);
