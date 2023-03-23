@@ -1,9 +1,11 @@
-# SpoonFed
+# SpoonFed 🍴
 
 Food Ordering Website
 Link to the app -> [Spoon-Fed](https://spoon-fed.vercel.app/)
 
-***Note** Dont overuse the otp feature due to limited amount of emails available per month.  Hope you understand* 😊
+Star the repo if you like it. 😊
+
+***Note** Dont overuse the otp feature due to limited amount of emails available per month.  Hope you understand* 👍 
 
 ## Overview / Technologies 💻
 - Food Ordering website.
