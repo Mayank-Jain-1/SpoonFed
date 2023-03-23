@@ -29,3 +29,19 @@ Link to the app -> [Spoon-Fed](https://spoon-fed.vercel.app/)
 - More precisely the newer things i learnt from this includes Bootstrap. (Better usage and got familiar with bootstrap and its grid system and using SASS to configure its varaibles)
 - OAuth . I got to learn about how website authorize with other social media websites like google. How a JWT token works and where it is stored. 
 - Using Auth0. Using Auth0 library to integrate Authorization in the app.
+- Making projects with Google Workspace and Facebook Developers. Using the APPID, CLient ID and using them in the Auth0 application. And then further using them into the application.
+- Setting up domains for both development and production for auth0 and Google, Facebook projects. 
+- EmailJS. Using email js to send an email to a receipent specified. 
+- CRUD Operations in MongoDb
+
+## Deployment using VERCEL
+- The backend which is the [spoon-fed/server](https://github.com/Mayank-Jain-1/SpoonFed.github.io/tree/master/server) at https://spoon-fed-server.vercel.app/ which initially doesnt return anything at the base url.
+- The front end which is the [spoon-fed/client](https://github.com/Mayank-Jain-1/SpoonFed.github.io/tree/master/client) at https://spoon-fed.vercel.app/
+- The front end is proxied to the backend server which is https://spoon-fed-server.vercel.app/. So that CORS policy is not violated. And to get and post data.
+- Environment variables are all set in the Vercel Project Settings both for front end and the backend.
+
+## Difficulties faced
+- I really dont like bootstrap as i have been using tailwind in the past which i feel is much superior than bootstrap.
+- Making the project APP for the facebook developers and setting up the domains for development purposes.
+- Deploymment on vercel. For some time i was not able to proxy to the backend. ALso environment variables were also not woeking. Later these were discovered as settings in vercel project and the proxy to be added in the vercel.json object.
+- Testing the EmailJS email system as you only get 200 emails per month in the free account. So i had to be very carefull and not overuse the api. 
