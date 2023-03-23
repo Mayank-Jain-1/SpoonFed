@@ -40,7 +40,7 @@ const Payment = ({ totalCost, restaurant, setPopup, items }) => {
          )
          .catch((err) => console.log(err));
       console.log("hi");
-      if (createRes.status === 200) {
+      if (createRes.status >= 200 && createRes.status < 300) {
          setMessage({
             text: createRes.message,
             color: "text-secondary",
