@@ -50,7 +50,12 @@ const createOtp = async (req, res) => {
                });
             });
       }
-   );
+   ).catch(err => {
+      res.status(500).json({
+         message: "Servers are down at the moment",
+         status: res.statusCode
+      })
+   });
 };
 
 module.exports = createOtp;

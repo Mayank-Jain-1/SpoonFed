@@ -10,7 +10,6 @@ import Filter from "./Pages/Filter";
 
 function App() {
    const dispatch = useDispatch();
-
    useEffect(() => {
       axios
          .get("/api/allRestaurants")

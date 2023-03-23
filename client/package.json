@@ -2,7 +2,7 @@
   "name": "spoon-fed",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:4000",
+  "proxy": "https://spoon-fed-server.vercel.app/",
   "dependencies": {
     "@auth0/auth0-react": "^2.0.1",
     "@fortawesome/fontawesome-svg-core": "^6.3.0",
