@@ -13,50 +13,45 @@ const createOtp = async (req, res) => {
          time: new Date(),
       },
       { upsert: true },
-      async () => {
-         const templateParams = {
-            name: name,
-            OTP: createdOTP,
-            to: email,
-         };
+      (err, data) => {
+         if (!err) {
+            console.log(data);
+            const templateParams = {
+               name: name,
+               OTP: createdOTP,
+               to: email,
+            };
 
-         emailjs
-            .send(
-               process.env.EMAIL_JS_SERVICE_ID,
-               process.env.EMAIL_JS_TEMPLATE_ID,
-               templateParams,
-               process.env.EMAIL_JS_PUBLIC_KEY
-            )
-            .then(
-               (response) => {
+            emailjs
+               .send(
+                  process.env.EMAIL_JS_SERVICE_ID,
+                  process.env.EMAIL_JS_TEMPLATE_ID,
+                  templateParams,
+                  process.env.EMAIL_JS_PUBLIC_KEY
+               )
+               .then((response) => {
                   res.status(201).json({
                      message: "Otp sent to " + email,
                      status: res.statusCode,
                   });
-               },
-               (error) => {
+               })
+               .catch((err) => {
+                  console.log(err);
                   res.status(480).json({
                      message:
                         "Couldn't send otp, check your email or try again.",
                      status: res.statusCode,
                   });
-               }
-            )
-            .catch((err) => {
-               console.log(err);
-               res.status(400).json({
-                  message: "Couldn't send otp, check your email or try again.",
-                  status: res.statusCode,
                });
+         } else {
+            console.log(err);
+            res.status(480).json({
+               message: "Couldn't send otp, check your email or try again.",
+               status: res.statusCode,
             });
+         }
       }
-   ).catch(err => {
-      console.log(err);
-      res.status(500).json({
-         message: "Servers are down at the moment",
-         status: res.statusCode
-      })
-   });
+   );
 };
 
 module.exports = createOtp;
