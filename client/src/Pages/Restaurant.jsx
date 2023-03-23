@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import NavHeader from "../components/NavHeader";
 import GalleryCarousel from "../components/Restaurant/GalleryCarousel";
+import GoBack from "../components/GoBack";
 import Order from "../components/Restaurant/Order";
 import Payment from "../components/Restaurant/Payment";
 
@@ -82,7 +83,8 @@ const Restaurant = () => {
          <NavHeader />
          {/* Image and carousel button */}
          <div className="container-fluid px-0 px-sm-3 px-md-4 px-lg-5 max-w-xl">
-            <div className="mt-3 mt-md-5 position-relative">
+            <GoBack className="mt-2 mt-md-3" text="Back to filters"/>
+            <div className="mt-2 mt-md-3 position-relative">
                <img
                   src={restaurant.thumb}
                   alt=""

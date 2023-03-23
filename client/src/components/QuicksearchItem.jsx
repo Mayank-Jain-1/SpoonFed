@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-const QuickSearchItem = ({imgURL, name, desc,cuisine}) => {
+const QuickSearchItem = ({imgURL, desc,cuisine}) => {
 
   const city = useSelector(store => store.searchInputs.city);
   
