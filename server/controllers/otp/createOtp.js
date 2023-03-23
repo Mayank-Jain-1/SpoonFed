@@ -51,6 +51,7 @@ const createOtp = async (req, res) => {
             });
       }
    ).catch(err => {
+      console.log(err);
       res.status(500).json({
          message: "Servers are down at the moment",
          status: res.statusCode
