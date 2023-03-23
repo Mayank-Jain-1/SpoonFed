@@ -33,7 +33,6 @@ export const SearchHeader = () => {
       return filteredRes;
    };
    const filteredRestaurants = filter(city, searchValue);
-   console.log("filteredRestaurants: ", filteredRestaurants);
 
    return (
       <>

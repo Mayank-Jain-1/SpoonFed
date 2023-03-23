@@ -83,7 +83,7 @@ const Restaurant = () => {
          <NavHeader />
          {/* Image and carousel button */}
          <div className="container-fluid px-0 px-sm-3 px-md-4 px-lg-5 max-w-xl">
-            <GoBack className="mt-2 mt-md-3" text="Back to filters"/>
+            <GoBack className="mt-2 mt-md-3" text="Back"/>
             <div className="mt-2 mt-md-3 position-relative">
                <img
                   src={restaurant.thumb}

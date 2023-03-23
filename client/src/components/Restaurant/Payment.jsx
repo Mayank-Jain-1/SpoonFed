@@ -23,7 +23,10 @@ const Payment = ({ totalCost, restaurant, setPopup, items }) => {
       setOtpEntered(e.target.value);
    };
    const createNewOTP = async () => {
-      removeMessage();
+      setMessage({
+         text: "Sending Otp...",
+         color: "text-secondary"
+      })
       const postData = {
          email: email,
          name: name,
@@ -39,7 +42,6 @@ const Payment = ({ totalCost, restaurant, setPopup, items }) => {
             }
          )
          .catch((err) => console.log(err));
-      console.log("hi");
       if (createRes.status >= 200 && createRes.status < 300) {
          setMessage({
             text: createRes.message,
@@ -89,7 +91,6 @@ const Payment = ({ totalCost, restaurant, setPopup, items }) => {
             return err.response.data;
          }
       );
-      console.log(verifyRes);
       if (verifyRes.status === 200) {
          setMessage({
             text: verifyRes.message,
@@ -102,8 +103,6 @@ const Payment = ({ totalCost, restaurant, setPopup, items }) => {
             color: "text-danger",
          });
       }
-
-      console.log(verifyRes);
    };
    const handleConfirmOrder = () => {
       removeMessage();

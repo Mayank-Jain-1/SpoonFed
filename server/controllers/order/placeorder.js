@@ -2,7 +2,6 @@ const Order = require("../../models/order");
 
 const placeorder = async (req, res) => {
    const { email, name, address, totalCost, order } = req.body;
-	console.log('{ email, name, address, totalCost, order }: ', { email, name, address, totalCost, order });
    Order.create({
       email: email,
       name: name,

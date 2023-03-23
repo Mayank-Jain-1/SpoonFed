@@ -14,13 +14,10 @@ function App() {
       axios
          .get("/api/allRestaurants")
          .then((res) => {
-            console.log(res);
             dispatch(updateRestaurant(res.data));
-            console.log("restaurant data fetched succesfully");
             // dispatch(updateFilteredRestaurants(res.data));
          })
          .catch((err) => {
-            console.log("couldnt fetch the restaurant data errror: ",err);
             dispatch(updateRestaurant([]));
          });
       // eslint-disable-next-line
