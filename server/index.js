@@ -12,6 +12,8 @@ const createOtp = require("./controllers/otp/createOtp.js");
 const verifyOtp = require("./controllers/otp/verifyotp.js");
 const placeorder = require("./controllers/order/placeorder.js");
 
+
+
 app.listen(4000);
 app.use(express.json());
 app.use((req, res, next) => {

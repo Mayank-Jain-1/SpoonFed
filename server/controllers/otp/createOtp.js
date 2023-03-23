@@ -1,6 +1,6 @@
 const OTP = require("../../models/otp");
 const nodemailer = require("nodemailer");
-const emailjs = require("@emailjs/browser");
+const emailjs = require("@emailjs/nodejs");
 
 const createOtp = async (req, res) => {
    const { name, email } = req.body;
@@ -27,9 +27,13 @@ const createOtp = async (req, res) => {
                   process.env.EMAIL_JS_SERVICE_ID,
                   process.env.EMAIL_JS_TEMPLATE_ID,
                   templateParams,
-                  process.env.EMAIL_JS_PUBLIC_KEY
+                  {
+                     publicKey: process.env.EMAIL_JS_PUBLIC_KEY,
+                     privateKey: process.env.EMAIL_JS_PRIVATE_KEY,
+                  }
                )
                .then((response) => {
+                  console.log(response)
                   res.status(201).json({
                      message: "Otp sent to " + email,
                      status: res.statusCode,
