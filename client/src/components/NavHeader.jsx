@@ -12,8 +12,10 @@ const NavHeader = () => {
    return (
       <div className="bg-danger restNavHeader ">
          <div className="container-fluid max-w-xl px-md-4 bg-danger restNavHeader d-flex px-4 align-items-center justify-content-between ">
+            <Link to={"/"}>
             <Logo text="Sf!" size={26} className="d-none d-md-block" />
             <Logo text="Sf!" size={20} className="d-md-none" />
+            </Link>
             <div className="d-flex justify-content-end align-items-center">
                {!isAuthenticated && !isLoading ? (
                   <>
